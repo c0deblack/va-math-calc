@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">VA Math Calculator</string>
+
+    <string-array name="nav_items">
+        <item>Home</item>
+        <item>About</item>
+        <item>Help</item>
+        <item>Privacy and Data</item>
+        <item>Additional Resources</item>
+        <item>Settings</item>
+        <item>Terms of Use</item>
+    </string-array>
+
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 </resources>
