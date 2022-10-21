@@ -5,10 +5,12 @@
 
 package com.nof.vamathcalculator;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Facilitates the creation and updating of the app SQLite database.
@@ -71,16 +73,20 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Add a single row to the basic compensation table
         ContentValues basic_values = new ContentValues();
         basic_values.put(DEPEND_STATUS_COLUMN_NAME, depend_status);
-        basic_values.put(VARates.Basic.Rating.RATING_30.getRating(), rate_30);
-        basic_values.put(VARates.Basic.Rating.RATING_40.getRating(), rate_40);
-        basic_values.put(VARates.Basic.Rating.RATING_50.getRating(), rate_50);
-        basic_values.put(VARates.Basic.Rating.RATING_60.getRating(), rate_60);
-        basic_values.put(VARates.Basic.Rating.RATING_70.getRating(), rate_70);
-        basic_values.put(VARates.Basic.Rating.RATING_80.getRating(), rate_80);
-        basic_values.put(VARates.Basic.Rating.RATING_90.getRating(), rate_90);
-        basic_values.put(VARates.Basic.Rating.RATING_100.getRating(), rate_100);
-        db.insert(BASIC_TABLE_NAME, null, basic_values);
-
+        basic_values.put(VARates.Basic.Rating.RATING_30.name(), rate_30);
+        basic_values.put(VARates.Basic.Rating.RATING_40.name(), rate_40);
+        basic_values.put(VARates.Basic.Rating.RATING_50.name(), rate_50);
+        basic_values.put(VARates.Basic.Rating.RATING_60.name(), rate_60);
+        basic_values.put(VARates.Basic.Rating.RATING_70.name(), rate_70);
+        basic_values.put(VARates.Basic.Rating.RATING_80.name(), rate_80);
+        basic_values.put(VARates.Basic.Rating.RATING_90.name(), rate_90);
+        basic_values.put(VARates.Basic.Rating.RATING_100.name(), rate_100);
+        try {
+            db.insert(BASIC_TABLE_NAME, null, basic_values);
+        } catch (SQLiteException e) {
+            Log.e("insertBasicRecord", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     // Helper function used to insert SMC compensation rates into the compensation table
@@ -100,17 +106,23 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
     ) {
         // Add a single row to the SMC compensation table
         ContentValues special_values = new ContentValues();
-        special_values.put(VARates.Special.Rating.SMC_L.getRating(), SMC_L);
-        special_values.put(VARates.Special.Rating.SMC_L_1_2.getRating(), SMC_L_1_2);
-        special_values.put(VARates.Special.Rating.SMC_M.getRating(), SMC_M);
-        special_values.put(VARates.Special.Rating.SMC_M_1_2.getRating(), SMC_M_1_2);
-        special_values.put(VARates.Special.Rating.SMC_N.getRating(), SMC_N);
-        special_values.put(VARates.Special.Rating.SMC_N_1_2.getRating(), SMC_N_1_2);
-        special_values.put(VARates.Special.Rating.SMC_O_P.getRating(), SMC_O_P);
-        special_values.put(VARates.Special.Rating.SMC_R_1.getRating(), SMC_R_1);
-        special_values.put(VARates.Special.Rating.SMC_R_2.getRating(), SMC_R_2);
-        special_values.put(VARates.Special.Rating.SMC_S.getRating(), SMC_S);
-        db.insert(SPECIAL_TABLE_NAME, null, special_values);
+        special_values.put(DEPEND_STATUS_COLUMN_NAME, depend_status);
+        special_values.put(VARates.Special.Rating.SMC_L.name(), SMC_L);
+        special_values.put(VARates.Special.Rating.SMC_L_1_2.name(), SMC_L_1_2);
+        special_values.put(VARates.Special.Rating.SMC_M.name(), SMC_M);
+        special_values.put(VARates.Special.Rating.SMC_M_1_2.name(), SMC_M_1_2);
+        special_values.put(VARates.Special.Rating.SMC_N.name(), SMC_N);
+        special_values.put(VARates.Special.Rating.SMC_N_1_2.name(), SMC_N_1_2);
+        special_values.put(VARates.Special.Rating.SMC_O_P.name(), SMC_O_P);
+        special_values.put(VARates.Special.Rating.SMC_R_1.name(), SMC_R_1);
+        special_values.put(VARates.Special.Rating.SMC_R_2.name(), SMC_R_2);
+        special_values.put(VARates.Special.Rating.SMC_S.name(), SMC_S);
+        try {
+            db.insert(SPECIAL_TABLE_NAME, null, special_values);
+        } catch (SQLiteException e) {
+            Log.e("insertSpecialRecord", e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 
@@ -120,15 +132,15 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Create the basic table columns
         db.execSQL("CREATE TABLE " + BASIC_TABLE_NAME + " ("
                     +" _id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + DEPEND_STATUS_COLUMN_NAME + " TEXT, "
-                    + VARates.Basic.Rating.RATING_30.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_40.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_50.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_60.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_70.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_80.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_90.getRating() + " REAL, "
-                    + VARates.Basic.Rating.RATING_100.getRating() + " REAL);");
+                    + DEPEND_STATUS_COLUMN_NAME + " TEXT UNIQUE NOT NULL, "
+                    + VARates.Basic.Rating.RATING_30.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_40.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_50.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_60.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_70.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_80.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_90.name() + " REAL NOT NULL, "
+                    + VARates.Basic.Rating.RATING_100.name() + " REAL NOT NULL);");
 
 
         //@@@@@@@@@@@@@@@@@@@@@@@
@@ -138,7 +150,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Veteran alone
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Alone_No_Depends.getStatus(),
+                VARates.Basic.Dependent_Status.Alone_No_Depends.name(),
                 467.39,
                 673.28,
                 958.44,
@@ -152,7 +164,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // With spouse, no dependents
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Spouse_No_Depends.getStatus(),
+                VARates.Basic.Dependent_Status.Spouse_No_Depends.name(),
                 522.39,
                 747.28,
                 1050.44,
@@ -166,7 +178,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // With spouse, one parent
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Spouse_One_Parent.getStatus(),
+                VARates.Basic.Dependent_Status.Spouse_One_Parent.name(),
                 566.39,
                 806.28,
                 1124.44,
@@ -180,7 +192,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // With spouse, two parent
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Spouse_Two_Parents.getStatus(),
+                VARates.Basic.Dependent_Status.Spouse_Two_Parents.name(),
                 610.39,
                 865.28,
                 1198.44,
@@ -194,7 +206,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // No spouse, one parent
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.One_Parent.getStatus(),
+                VARates.Basic.Dependent_Status.One_Parent.name(),
                 511.39,
                 732.28,
                 1032.44,
@@ -208,7 +220,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // No spouse, two parents
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Two_Parents.getStatus(),
+                VARates.Basic.Dependent_Status.Two_Parents.name(),
                 555.39,
                 791.28,
                 1106.44,
@@ -226,7 +238,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // One Child, no spouse or parents
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_Only.getStatus(),
+                VARates.Basic.Dependent_Status.Child_Only.name(),
                 504.39,
                 722.28,
                 1020.44,
@@ -240,7 +252,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // One Child and spouse, no parents
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_and_Spouse.getStatus(),
+                VARates.Basic.Dependent_Status.Child_and_Spouse.name(),
                 563.39,
                 801.28,
                 1118.44,
@@ -254,7 +266,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // One Child and spouse, and one parent
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_Spouse_One_Parent.getStatus(),
+                VARates.Basic.Dependent_Status.Child_Spouse_One_Parent.name(),
                 607.39,
                 860.28,
                 1192.44,
@@ -268,7 +280,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // One Child and spouse, and two parent
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_Spouse_Two_Parents.getStatus(),
+                VARates.Basic.Dependent_Status.Child_Spouse_Two_Parents.name(),
                 651.39,
                 919.28,
                 1266.44,
@@ -282,7 +294,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // One Child and one parent
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_One_Parent.getStatus(),
+                VARates.Basic.Dependent_Status.Child_One_Parent.name(),
                 548.39,
                 781.28,
                 1094.44,
@@ -296,7 +308,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // One Child and two parents
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_Two_Parents.getStatus(),
+                VARates.Basic.Dependent_Status.Child_Two_Parents.name(),
                 592.39,
                 840.28,
                 1168.44,
@@ -314,7 +326,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Aid and attendance compensation
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Spouse_Aid_Attendance.getStatus(),
+                VARates.Basic.Dependent_Status.Spouse_Aid_Attendance.name(),
                 51.00,
                 68.00,
                 86.00,
@@ -329,7 +341,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Each additional child under 18
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Additional_Child.getStatus(),
+                VARates.Basic.Dependent_Status.Additional_Child.name(),
                 27.00,
                 36.00,
                 46.00,
@@ -343,7 +355,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Each additional child over 18 in qualifying school
         insertBasicRecord(
                 db,
-                VARates.Basic.Dependent_Status.Child_Education.getStatus(),
+                VARates.Basic.Dependent_Status.Child_Education.name(),
                 89.00,
                 119.00,
                 149.00,
@@ -361,17 +373,17 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Create the SMC table columns
         db.execSQL("CREATE TABLE " + SPECIAL_TABLE_NAME + " ("
                     +" _id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + DEPEND_STATUS_COLUMN_NAME + " TEXT, "
-                    + VARates.Special.Rating.SMC_L.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_L_1_2.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_M.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_M_1_2.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_N.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_N_1_2.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_O_P.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_R_1.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_R_2.getRating() + " REAL, "
-                    + VARates.Special.Rating.SMC_S.getRating() + " REAL);");
+                    + DEPEND_STATUS_COLUMN_NAME + " TEXT UNIQUE NOT NULL, "
+                    + VARates.Special.Rating.SMC_L.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_L_1_2.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_M.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_M_1_2.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_N.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_N_1_2.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_O_P.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_R_1.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_R_2.name() + " REAL NOT NULL, "
+                    + VARates.Special.Rating.SMC_S.name() + " REAL NOT NULL);");
 
         //@@@@@@@@@@@@@@@@@@@@@@@
         /* NO CHILDREN SECTION */
@@ -380,7 +392,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Veteran alone
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Alone_No_Depends.getStatus(),
+                VARates.Special.Dependent_Status.Alone_No_Depends.name(),
                 4146.13,
                 4360.47,
                 4575.68,
@@ -396,7 +408,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // With spouse, no parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Spouse_No_Depends.getStatus(),
+                VARates.Special.Dependent_Status.Spouse_No_Depends.name(),
                 4331.91,
                 4546.25,
                 4761.46,
@@ -412,7 +424,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // With spouse, one parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Spouse_One_Parent.getStatus(),
+                VARates.Special.Dependent_Status.Spouse_One_Parent.name(),
                 4481.01,
                 4695.35,
                 4910.56,
@@ -428,7 +440,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // With spouse, two parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Spouse_Two_Parents.getStatus(),
+                VARates.Special.Dependent_Status.Spouse_Two_Parents.name(),
                 4630.11,
                 4844.45,
                 5059.66,
@@ -444,7 +456,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // No spouse, one parent
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.One_Parent.getStatus(),
+                VARates.Special.Dependent_Status.One_Parent.name(),
                 4295.23,
                 4509.57,
                 4724.78,
@@ -460,7 +472,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // No spouse, two parent
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Two_Parents.getStatus(),
+                VARates.Special.Dependent_Status.Two_Parents.name(),
                 4444.33,
                 4658.67,
                 4873.88,
@@ -480,7 +492,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Children, no spouse or parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_Only.getStatus(),
+                VARates.Special.Dependent_Status.Child_Only.name(),
                 4270.37,
                 4484.71,
                 4699.92,
@@ -496,7 +508,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Spouse and child, no parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_and_Spouse.getStatus(),
+                VARates.Special.Dependent_Status.Child_and_Spouse.name(),
                 4467.96,
                 4682.30,
                 4897.51,
@@ -512,7 +524,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Spouse, child, and one parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_Spouse_One_Parent.getStatus(),
+                VARates.Special.Dependent_Status.Child_Spouse_One_Parent.name(),
                 4617.06,
                 4831.40,
                 5046.61,
@@ -528,7 +540,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Spouse, child, and two parents
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_Spouse_Two_Parents.getStatus(),
+                VARates.Special.Dependent_Status.Child_Spouse_Two_Parents.name(),
                 4766.16,
                 4980.50,
                 5195.71,
@@ -544,7 +556,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Child and one parent, no spouse
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_One_Parent.getStatus(),
+                VARates.Special.Dependent_Status.Child_One_Parent.name(),
                 4419.47,
                 4633.81,
                 4849.02,
@@ -560,7 +572,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Child and two parents, no spouse
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_Two_Parents.getStatus(),
+                VARates.Special.Dependent_Status.Child_Two_Parents.name(),
                 4568.57,
                 4782.91,
                 4998.12,
@@ -580,7 +592,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Aid and attendance
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Spouse_Aid_Attendance.getStatus(),
+                VARates.Special.Dependent_Status.Spouse_Aid_Attendance.name(),
                 170.38,
                 170.38,
                 170.38,
@@ -596,7 +608,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Each additional child under 18
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Additional_Child.getStatus(),
+                VARates.Special.Dependent_Status.Additional_Child.name(),
                 92.31,
                 92.31,
                 92.31,
@@ -612,7 +624,7 @@ public class VAMathDBHelper extends SQLiteOpenHelper {
         // Aid and attendance
         insertSpecialRecord(
                 db,
-                VARates.Special.Dependent_Status.Child_Education.getStatus(),
+                VARates.Special.Dependent_Status.Child_Education.name(),
                 298.18,
                 298.18,
                 298.18,

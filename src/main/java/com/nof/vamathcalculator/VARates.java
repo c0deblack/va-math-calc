@@ -33,14 +33,14 @@ public final class VARates {
 
         // These represent column names (titles) in the compensation table
         enum Rating {
-            RATING_30   ("p30"),
-            RATING_40   ("p40"),
-            RATING_50   ("p50"),
-            RATING_60   ("p60"),
-            RATING_70   ("p70"),
-            RATING_80   ("p80"),
-            RATING_90   ("p90"),
-            RATING_100  ("p100")
+            RATING_30   ("30%"),
+            RATING_40   ("40%"),
+            RATING_50   ("50%"),
+            RATING_60   ("60%"),
+            RATING_70   ("70%"),
+            RATING_80   ("80%"),
+            RATING_90   ("90%"),
+            RATING_100  ("100%")
             ;
 
             private final String mRating;
@@ -58,27 +58,25 @@ public final class VARates {
         enum Dependent_Status {
 
             // With a dependent spouse or parent, but no children
-
             Alone_No_Depends    ("Basic veteran alone with no dependents"),
-            Spouse_No_Depends   ("Basic veteran with spouse and no parents or children"),
-            Spouse_One_Parent   ("Basic veteran with spouse and one dependent parent"),
-            Spouse_Two_Parents  ("Basic veteran with spouse and two dependent parents"),
-            One_Parent          ("Basic veteran with no spouse or children and one dependent parent"),
-            Two_Parents         ("Basic veteran with no spouse or children and two dependent parents"),
+            Spouse_No_Depends   ("I have spouse and no parents or children"),
+            Spouse_One_Parent   ("I have spouse and one dependent parent"),
+            Spouse_Two_Parents  ("I have spouse and two dependent parents"),
+            One_Parent          ("I have no spouse or children and one dependent parent"),
+            Two_Parents         ("I have no spouse or children and two dependent parents"),
 
             // With dependents, including children
-            Child_Only          ("Basic veteran with child(ren) and no dependent spouse or parents"),
-            Child_and_Spouse    ("Basic veteran with child(ren) and spouse"),
-            Child_Spouse_One_Parent ("Basic veteran with child(ren) spouse and one dependent parent"),
-            Child_Spouse_Two_Parents ("Basic veteran with child(ren) spouse and two dependent parents"),
-            Child_One_Parent    ("Basic veteran with child(ren) and one parent but no spouse"),
-            Child_Two_Parents    ("Basic veteran with child(ren) and two parents but no spouse"),
+            Child_Only          ("I have at least 1 child and no dependent spouse or parents"),
+            Child_and_Spouse    ("I have at least 1 child and a spouse"),
+            Child_Spouse_One_Parent ("I have at least 1 child, a spouse, and one dependent parent"),
+            Child_Spouse_Two_Parents ("I have at least 1 child, a spouse, and two dependent parents"),
+            Child_One_Parent    ("I have at least 1 child and one parent but no spouse"),
+            Child_Two_Parents    ("I have at least 1 child and two parents but no spouse"),
 
             // Additional amounts
-            Spouse_Aid_Attendance ("Basic veteran requires help with daily activities"),
-            Additional_Child      ("Basic veteran each additional amount per child under 18"),
-            Child_Education       ("Basic veteran each additional child in qualified school")
-
+            Spouse_Aid_Attendance ("I requires help with daily activities"),
+            Additional_Child      ("I have more than one child under 18"),
+            Child_Education       ("I have at least one child in qualifying school program")
             ;
 
             private final String mStatus;
@@ -104,16 +102,16 @@ public final class VARates {
 
         // These represent columns in the compensation table
         enum Rating {
-            SMC_L       ("SMC_L"),
-            SMC_L_1_2   ("SMC_L_1_2"),
-            SMC_M       ("SMC_M"),
-            SMC_M_1_2   ("SMC_M_1_2"),
-            SMC_N       ("SMC_N"),
-            SMC_N_1_2   ("SMC_N_1_2"),
-            SMC_O_P     ("SMC_O_P"),
-            SMC_R_1     ("SMC_R_1"),
-            SMC_R_2     ("SMC_R_2_T"),
-            SMC_S       ("SMC_S")
+            SMC_L       ("SMC-L"),
+            SMC_L_1_2   ("SMC-L 1/2"),
+            SMC_M       ("SMC-M"),
+            SMC_M_1_2   ("SMC-M 1/2"),
+            SMC_N       ("SMC-N"),
+            SMC_N_1_2   ("SMC-N 1/2"),
+            SMC_O_P     ("SMC-O/P"),
+            SMC_R_1     ("SMC-R.1"),
+            SMC_R_2     ("SMC-R.2/T"),
+            SMC_S       ("SMC-S")
             ;
 
             private final String mRating;
@@ -131,26 +129,25 @@ public final class VARates {
         enum Dependent_Status {
 
             // With a dependent spouse or parent, but no children
-
-            Alone_No_Depends    ("Special veteran alone with no dependents"),
-            Spouse_No_Depends   ("Special veteran with spouse and no parents or children"),
-            Spouse_One_Parent   ("Special veteran with spouse and one dependent parent"),
-            Spouse_Two_Parents  ("Special veteran with spouse and two dependent parents"),
-            One_Parent          ("Special veteran with no spouse or children and one dependent parent"),
-            Two_Parents         ("Special veteran with no spouse or children and two dependent parents"),
+            Alone_No_Depends    ("Basic veteran alone with no dependents"),
+            Spouse_No_Depends   ("I have spouse and no parents or children"),
+            Spouse_One_Parent   ("I have spouse and one dependent parent"),
+            Spouse_Two_Parents  ("I have spouse and two dependent parents"),
+            One_Parent          ("I have no spouse or children and one dependent parent"),
+            Two_Parents         ("I have no spouse or children and two dependent parents"),
 
             // With dependents, including children
-            Child_Only          ("Special veteran with child(ren) and no dependent spouse or parents"),
-            Child_and_Spouse    ("Special veteran with child(ren) and spouse"),
-            Child_Spouse_One_Parent ("Special veteran with child(ren) spouse and one dependent parent"),
-            Child_Spouse_Two_Parents ("Special veteran with child(ren) spouse and two dependent parents"),
-            Child_One_Parent    ("Special veteran with child(ren) and one parent but no spouse"),
-            Child_Two_Parents    ("Special veteran with child(ren) and two parents but no spouse"),
+            Child_Only          ("I have at least 1 child and no dependent spouse or parents"),
+            Child_and_Spouse    ("I have at least 1 child and a spouse"),
+            Child_Spouse_One_Parent ("I have at least 1 child, a spouse, and one dependent parent"),
+            Child_Spouse_Two_Parents ("I have at least 1 child, a spouse, and two dependent parents"),
+            Child_One_Parent    ("I have at least 1 child and one parent but no spouse"),
+            Child_Two_Parents    ("I have at least 1 child and two parents but no spouse"),
 
             // Additional amounts
-            Spouse_Aid_Attendance ("Special veteran requires help with daily activities"),
-            Additional_Child      ("Special veteran each additional amount per child under 18"),
-            Child_Education       ("Special veteran each additional child in qualified school")
+            Spouse_Aid_Attendance ("I requires help with daily activities"),
+            Additional_Child      ("I have more than one child under 18"),
+            Child_Education       ("I have at least one child in qualifying school program")
             ;
 
             private final String mStatus;
