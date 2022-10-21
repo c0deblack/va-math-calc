@@ -1,4 +1,8 @@
 package com.nof.vamathcalculator;
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 
 /**
  * Contains data related to the va disability ratings.
@@ -13,10 +17,10 @@ package com.nof.vamathcalculator;
  * specific monthly compensation dollar amounts. These amounts are used to calculate a veteran's
  * total compensation.
  *
- * @see https://www.va.gov/disability/compensation-rates/veteran-rates/
- * @see https://www.va.gov/disability/compensation-rates/special-monthly-compensation-rates/
- * @see https://www.va.gov/disability/compensation-rates/special-benefit-allowance-rates/
- * @see https://www.va.gov/disability/compensation-rates/birth-defect-rates/
+ * @see <a href="https://www.va.gov/disability/compensation-rates/veteran-rates/">Basic Rates</a>
+ * @see <a href="https://www.va.gov/disability/compensation-rates/special-monthly-compensation-rates/">SMC Rates</a>
+ * @see <a href="https://www.va.gov/disability/compensation-rates/special-benefit-allowance-rates/">Home Care Allowance</a>
+ * @see <a href="https://www.va.gov/disability/compensation-rates/birth-defect-rates/">Birth Defect Comp Rates</a>
  */
 public final class VARates {
 
@@ -27,19 +31,19 @@ public final class VARates {
         public static final double RATING_10 = 152.64;
         public static final double RATING_20 = 301.74;
 
-        // These represent columns in the compensation table
+        // These represent column names (titles) in the compensation table
         enum Rating {
-            RATING_30   ("30%"),
-            RATING_40   ("40%"),
-            RATING_50   ("50%"),
-            RATING_60   ("60%"),
-            RATING_70   ("70%"),
-            RATING_80   ("80%"),
-            RATING_90   ("90%"),
-            RATING_100   ("100%")
+            RATING_30   ("p30"),
+            RATING_40   ("p40"),
+            RATING_50   ("p50"),
+            RATING_60   ("p60"),
+            RATING_70   ("p70"),
+            RATING_80   ("p80"),
+            RATING_90   ("p90"),
+            RATING_100  ("p100")
             ;
 
-            private String mRating;
+            private final String mRating;
 
             Rating(String rating) {
                 this.mRating = rating;
@@ -66,9 +70,9 @@ public final class VARates {
             Child_Only          ("Basic veteran with child(ren) and no dependent spouse or parents"),
             Child_and_Spouse    ("Basic veteran with child(ren) and spouse"),
             Child_Spouse_One_Parent ("Basic veteran with child(ren) spouse and one dependent parent"),
-            Child_Spouse_Two_Parent ("Basic veteran with child(ren) spouse and two dependent parents"),
+            Child_Spouse_Two_Parents ("Basic veteran with child(ren) spouse and two dependent parents"),
             Child_One_Parent    ("Basic veteran with child(ren) and one parent but no spouse"),
-            Child_Two_Parent    ("Basic veteran with child(ren) and two parents but no spouse"),
+            Child_Two_Parents    ("Basic veteran with child(ren) and two parents but no spouse"),
 
             // Additional amounts
             Spouse_Aid_Attendance ("Basic veteran requires help with daily activities"),
@@ -77,11 +81,12 @@ public final class VARates {
 
             ;
 
-            private String mStatus;
+            private final String mStatus;
 
             Dependent_Status(String status) {
                 this.mStatus = status;
             }
+
             public String getStatus() {
                 return this.mStatus;
             }
@@ -99,19 +104,19 @@ public final class VARates {
 
         // These represent columns in the compensation table
         enum Rating {
-            SMC_L       ("SMC-L"),
-            SMC_L_1_2   ("SMC-L-1/2"),
-            SMC_M       ("SMC-M"),
-            SMC_M_1_2   ("SMC-M-1/2"),
-            SMC_N       ("SMC-N"),
-            SMC_N_1_2   ("SMC-N-1/2"),
-            SMC_O_P     ("SMC-O/P"),
-            SMC_R_1     ("SMC-R.1"),
-            SMC_R_2     ("SMC-R.2/T"),
-            SMC_S       ("SMC-S")
+            SMC_L       ("SMC_L"),
+            SMC_L_1_2   ("SMC_L_1_2"),
+            SMC_M       ("SMC_M"),
+            SMC_M_1_2   ("SMC_M_1_2"),
+            SMC_N       ("SMC_N"),
+            SMC_N_1_2   ("SMC_N_1_2"),
+            SMC_O_P     ("SMC_O_P"),
+            SMC_R_1     ("SMC_R_1"),
+            SMC_R_2     ("SMC_R_2_T"),
+            SMC_S       ("SMC_S")
             ;
 
-            private String mRating;
+            private final String mRating;
 
             Rating(String rating) {
                 this.mRating = rating;
@@ -138,9 +143,9 @@ public final class VARates {
             Child_Only          ("Special veteran with child(ren) and no dependent spouse or parents"),
             Child_and_Spouse    ("Special veteran with child(ren) and spouse"),
             Child_Spouse_One_Parent ("Special veteran with child(ren) spouse and one dependent parent"),
-            Child_Spouse_Two_Parent ("Special veteran with child(ren) spouse and two dependent parents"),
+            Child_Spouse_Two_Parents ("Special veteran with child(ren) spouse and two dependent parents"),
             Child_One_Parent    ("Special veteran with child(ren) and one parent but no spouse"),
-            Child_Two_Parent    ("Special veteran with child(ren) and two parents but no spouse"),
+            Child_Two_Parents    ("Special veteran with child(ren) and two parents but no spouse"),
 
             // Additional amounts
             Spouse_Aid_Attendance ("Special veteran requires help with daily activities"),
@@ -148,7 +153,7 @@ public final class VARates {
             Child_Education       ("Special veteran each additional child in qualified school")
             ;
 
-            private String mStatus;
+            private final String mStatus;
 
             Dependent_Status(String status) {
                 this.mStatus = status;
