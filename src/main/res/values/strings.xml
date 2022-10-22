@@ -22,4 +22,7 @@
     <string name="close_drawer">Close Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_loading_fullscreen">VA Math Calculator</string>
+    <string name="dummy_content">LOGO\nGOES\nHERE</string>
+    <string name="main_logo_desc">The main app logo displayed on a logo screen.</string>
 </resources>

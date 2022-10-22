@@ -18,7 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 
-//import android.app.Fragment;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 
 import android.view.Menu;
@@ -61,10 +61,7 @@ public class MainActivity extends Activity {
 
         current_position = position;
 
-        TestFragment fragment;
-        String testOne = "TestOne";
-        String testTwo = "TestTwo";
-        fragment = TestFragment.newInstance(testOne, testTwo);
+        Fragment fragment = null;
 
         switch (position) {
             case 1:
@@ -87,6 +84,9 @@ public class MainActivity extends Activity {
                 break;
             default:
                 // set Main fragment
+                String testOne = "TestOne";
+                String testTwo = "TestTwo";
+                fragment = TestFragment.newInstance(testOne, testTwo);
         }
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
