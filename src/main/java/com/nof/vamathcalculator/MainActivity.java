@@ -155,11 +155,14 @@ public class MainActivity extends Activity {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu();
+                drawer_toggle.syncState();
+
             }
 
             public void onDrawerOpened(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu();
+                drawer_toggle.syncState();
             }
         };
 
@@ -173,6 +176,10 @@ public class MainActivity extends Activity {
 
         // Inflate the menu defined in main_menu.xml
         getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        View view = findViewById(android.R.id.home);
+        view.setPadding(20, 0, 10 ,0);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -205,5 +212,11 @@ public class MainActivity extends Activity {
     public void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
         state.putInt("position", current_position);
+    }
+
+    // Hide/show action bar items based on navigation menu state
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
     }
 }
