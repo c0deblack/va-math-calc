@@ -25,4 +25,47 @@
     <string name="title_activity_loading_fullscreen">VA Math Calculator</string>
     <string name="dummy_content">LOGO\nGOES\nHERE</string>
     <string name="main_logo_desc">The main app logo displayed on a logo screen.</string>
+    <string name="large_text">
+        <b>HOME PAGE</b>\n\n
+
+        This page will contain a fixed "Dependency Status" box at the top.\n\n
+
+        Below that will be a scrollable area containing a separate box for each
+        individual disability. Add/Edit/Remove buttons will be available on each box to update the
+        settings.\n\n
+
+        See below for example.\n\n
+        #########################################################\n
+        Dependency Status\n
+        [ Spouse: 1 ] [ Children Under 18: 3 ]\n
+        [ Dependent Parents: 2] [ Daily Aid required: Yes ]\n
+        [ # Children with Disabilities: 0 ]\n
+        Add | Edit | Delete\n
+        ##########################################################\n\n\n
+        #########################################################\n
+        Disability #1 : Short Description\n
+
+        ( isBasic or isSMC ) | Rating | (ifBasic: isBilateral)\n
+
+        Edit | Delete\n
+        ##########################################################\n\n\n
+        #########################################################\n
+        Disability #2 : Short Description\n
+
+        ( isBasic or isSMC ) | Rating | (ifBasic: isBilateral)\n
+        Edit | Delete\n
+        ##########################################################\n\n\n
+        #########################################################\n
+        Disability #3 : Short Description\n
+
+        ( isBasic or isSMC ) | Rating | (ifBasic: isBilateral)\n
+        Edit | Delete\n
+        ##########################################################\n\n\n
+
+        ________________________________________________
+        Combined Disability Rating: DISABILITY RATING\n
+        SCM Rating (if any): SCM STATUS\n
+        Total Compensation: TOTAL COMPENSATION RATE\n
+        ________________________________________________
+    </string>
 </resources>
