@@ -10,8 +10,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
-import com.nof.vamathcalculator.databinding.ActivityLoadingFullscreenBinding;
-
 public class LoadingFullscreenActivity extends Activity {
 
     private class QueryDB extends AsyncTask<String, Void, Double> {
@@ -63,9 +61,7 @@ public class LoadingFullscreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityLoadingFullscreenBinding binding;
-        binding = ActivityLoadingFullscreenBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_loading_fullscreen);
 
         if (savedInstanceState == null) {
             new QueryDB().execute(VARates.Basic.Dependent_Status.Alone_No_Depends.getStatus());
