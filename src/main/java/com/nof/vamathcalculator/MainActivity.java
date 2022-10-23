@@ -6,7 +6,6 @@
 package com.nof.vamathcalculator;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -28,6 +27,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 
 public class MainActivity extends Activity {
 
+    /**
+     * Use user-friendly enumerations for that relate fragment and nav menu position.
+     */
     private final int HOME_SCREEN = 0;
     private final int TEST_FRAG = 1;
     //private final int ABOUT_FRAG = 1;
@@ -64,7 +66,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);  // lifecyle methods require calling the base constructor
+        super.onCreate(savedInstanceState);  // lifecycle methods require calling the base constructor
 
         /**
          * Load the contents of the activity_main.xml file
@@ -100,7 +102,7 @@ public class MainActivity extends Activity {
         ));
 
         /**
-         * This attaches the custom drawer onClick listener to the ListView with the drawer layout.
+         * This attaches the custom drawer onClick listener to the ListView within the drawer layout.
          */
         drawer_list.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -154,7 +156,8 @@ public class MainActivity extends Activity {
 
         /**
          * The fragment onBackStackChanged listener is used to update the title when
-         * the back button is pressed.
+         * the back button is pressed. It is also used to highlight the correct item int the
+         * navigation menu.
          */
         getFragmentManager().addOnBackStackChangedListener(
                 new FragmentManager.OnBackStackChangedListener() {
