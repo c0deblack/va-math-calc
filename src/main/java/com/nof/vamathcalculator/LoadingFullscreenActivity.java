@@ -10,8 +10,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
-import com.nof.vamathcalculator.databinding.ActivityLoadingFullscreenBinding;
-
+/**
+ * This is currently incomplete. The database code will execute during the loading screen but
+ * right now there is no code that stores data from the user. That will be worked on along with
+ * the interface to prompt the user for disability and dependency data.
+ *
+ * Once that is in place the loading screen will load that data on start, and pass that data to
+ * the MainActivity using intents. The MainActivity will populate its view with that data.
+ *
+ * As a caveat, the MainActivity will require its own db code in case the loading process is
+ * not ran or interrupted for any reason. If the App is suspended and resumed the loading screen
+ * may not be available to load the data in that case.
+ */
 public class LoadingFullscreenActivity extends Activity {
 
     private class QueryDB extends AsyncTask<String, Void, Double> {
@@ -63,9 +73,7 @@ public class LoadingFullscreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityLoadingFullscreenBinding binding;
-        binding = ActivityLoadingFullscreenBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_loading_fullscreen);
 
         if (savedInstanceState == null) {
             new QueryDB().execute(VARates.Basic.Dependent_Status.Alone_No_Depends.getStatus());

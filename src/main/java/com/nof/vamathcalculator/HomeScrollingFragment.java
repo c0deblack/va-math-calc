@@ -9,6 +9,10 @@ import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+/**
+ * This fragment loads the Home fragment layout. It is bear now, but it will soon have references
+ * to all of the views that will be present on the Home Page.
+ */
 public class HomeScrollingFragment extends Fragment {
 
     @Nullable

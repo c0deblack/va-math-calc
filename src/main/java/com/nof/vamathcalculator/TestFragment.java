@@ -18,9 +18,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link TestFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * This fragment is purely for testing purposes. Currently it is wired up to the "About" menu item.
+ * Press the About item and this fragment will appear. Press the back button and you will be back on
+ * the Home Fragment.
  */
 public class TestFragment extends Fragment {
 

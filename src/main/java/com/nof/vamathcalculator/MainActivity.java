@@ -30,6 +30,13 @@ public class MainActivity extends Activity {
 
     private final int HOME_SCREEN = 0;
     private final int TEST_FRAG = 1;
+    //private final int ABOUT_FRAG = 1;
+    private final int HELP_FRAG = 2;
+    private final int PRIVACY_FRAG = 3;
+    private final int RESOURCE_FRAG = 4;
+    private final int SETTINGS_FRAG = 5;
+    private final int TERMS_FRAG = 6;
+
 
     private String[] nav_items;     // stores nav item names from the nav_items string-array
     private ListView drawer_list;   // holds a reference to the nav drawer's list view: @+id/drawer
@@ -174,31 +181,35 @@ public class MainActivity extends Activity {
      */
     private void selectItem(int position) {
 
+        /**
+         * Prevent duplicates fragments in the backstack.
+         */
         if (position != 0 && position == current_position) return;
+
         current_position = position;
         Fragment fragment = null;
 
         switch (current_position) {
-            case 1:
+            case TEST_FRAG:
                 // set About fragment
                 String testOne = "TestOne";
                 String testTwo = "TestTwo";
                 fragment = TestFragment.newInstance(testOne, testTwo);
                 changeFragment(fragment);
                 break;
-            case 2:
+            case HELP_FRAG:
                 // set Help fragment
                 break;
-            case 3:
+            case PRIVACY_FRAG:
                 // set Privacy fragment
                 break;
-            case 4:
+            case RESOURCE_FRAG:
                 // set Resources fragment
                 break;
-            case 5:
+            case SETTINGS_FRAG:
                 // set Settings Fragment
                 break;
-            case 6:
+            case TERMS_FRAG:
                 // set Terms fragment
                 break;
             default:
