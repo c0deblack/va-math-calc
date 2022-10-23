@@ -10,10 +10,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
+import com.nof.vamathcalculator.databinding.ActivityLoadingFullscreenBinding;
+
 public class LoadingFullscreenActivity extends Activity {
 
     private class QueryDB extends AsyncTask<String, Void, Double> {
         protected Double doInBackground(String... status) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             try {
                 SQLiteOpenHelper db_helper = new VAMathDBHelper(getApplicationContext());
                 SQLiteDatabase db = db_helper.getReadableDatabase();
@@ -55,6 +63,10 @@ public class LoadingFullscreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityLoadingFullscreenBinding binding;
+        binding = ActivityLoadingFullscreenBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         if (savedInstanceState == null) {
             new QueryDB().execute(VARates.Basic.Dependent_Status.Alone_No_Depends.getStatus());
         }
