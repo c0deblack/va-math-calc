@@ -25,23 +25,30 @@
     <string name="title_activity_loading_fullscreen">VA Math Calculator</string>
     <string name="dummy_content">LOGO\nGOES\nHERE</string>
     <string name="main_logo_desc">The main app logo displayed on a logo screen.</string>
-    <string name="large_text">
-        <b>HOME PAGE</b>\n\n
 
-        This page will contain a fixed "Dependency Status" box at the top.\n\n
+    <string name="home_header_placeholder_text">
+        <b>HOME PAGE</b>\n
+
+        This page will contain a fixed "Dependency Status" box at the top.\n
 
         Below that will be a scrollable area containing a separate box for each
         individual disability. Add/Edit/Remove buttons will be available on each box to update the
-        settings.\n\n
+        settings. If there orientation is in landscape mode, the fragments will sit horizontally
+        instead of vertically.\n
 
-        See below for example.\n\n
+        See below for example.
+    </string>
+
+    <string name="home_sticky_content_placeholder_text">
         #########################################################\n
         Dependency Status\n
         [ Spouse: 1 ] [ Children Under 18: 3 ]\n
         [ Dependent Parents: 2] [ Daily Aid required: Yes ]\n
         [ # Children with Disabilities: 0 ]\n
         Add | Edit | Delete\n
-        ##########################################################\n\n\n
+        ##########################################################
+    </string>
+    <string name="home_scroll_content_placeholder_text">
         #########################################################\n
         Disability #1 : Short Description\n
 
@@ -61,7 +68,8 @@
         ( isBasic or isSMC ) | Rating | (ifBasic: isBilateral)\n
         Edit | Delete\n
         ##########################################################\n\n\n
-
+    </string>
+    <string name="home_compensation_content_placeholder_text">
         ________________________________________________
         Combined Disability Rating: DISABILITY RATING\n
         SCM Rating (if any): SCM STATUS\n
