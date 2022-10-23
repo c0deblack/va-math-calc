@@ -3,10 +3,10 @@
  * https://github.com/c0deblack
  */
 
-
 package com.nof.vamathcalculator;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import android.view.Menu;
@@ -27,15 +28,21 @@ import android.support.v7.app.ActionBarDrawerToggle;
 
 public class MainActivity extends Activity {
 
+    private final int HOME_SCREEN = 0;
+    private final int TEST_FRAG = 1;
+
     private String[] nav_items;     // stores nav item names from the nav_items string-array
     private ListView drawer_list;   // holds a reference to the nav drawer's list view: @+id/drawer
     private DrawerLayout drawer_layout; // holds a reference to the nav drawer itself
     private ActionBarDrawerToggle drawer_toggle; // a reference to the drawer toggle event object
     private int current_position = 0;
 
-    // Implement an onItemClickListener used by the ListView
+    /**
+     * Implement an onItemClickListener used by the ListView. When an item within the nav menu
+     * is clicked, its position is passed to the onItemClick() method. The position is used in the
+     * selectItem() method; this method selects a fragment to display based on that position
+     */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
-
         @Override
         public void onItemClick(
                 AdapterView<?> parent,
@@ -43,29 +50,141 @@ public class MainActivity extends Activity {
                 int position,
                 long id
         ) {
-
-            /**
-             * When a user clicks on an item in the navigation drawer,
-             * the onItemClick() method gets called.
-             *
-             * Fragment transactions can occur after this function begins
-             * execution.
-             * */
-
             // pass the position of the item clicked to selectItem() to be processed
             selectItem(position);
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);  // lifecyle methods require calling the base constructor
+
+        /**
+         * Load the contents of the activity_main.xml file
+         */
+        setContentView(R.layout.activity_main);
+
+        /**
+         * Getting references to different resources
+         * nav_items is an array of string values used in the navigation bar
+         * drawer_list is the ListView used within the DrawerLayout in activity_main.xml
+         * drawer_layout is DrawerLayout element defined in activity_main.xml
+         */
+        nav_items = getResources().getStringArray(R.array.nav_items);
+        drawer_list = findViewById(R.id.drawer);
+        drawer_layout = findViewById(R.id.drawer_layout);
+
+        /**
+         * These calls enable icons in the navigation drawer. The hamburger icon is displayed when
+         * the nav menu is closed, and a back icon is displayed when the navigation menu is open
+         */
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
+        /**
+         * Array Adapters generate a ListView from an array. In this case the array nav_items holds
+         * the values of the strings that will be used for the ListView within the navigation
+         * drawer. The array gets its values from the string-array block in the strings.xml file.
+         */
+        drawer_list.setAdapter(new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_activated_1,
+                nav_items
+        ));
+
+        /**
+         * This attaches the custom drawer onClick listener to the ListView with the drawer layout.
+         */
+        drawer_list.setOnItemClickListener(new DrawerItemClickListener());
+
+        /**
+         * savedInstanceState will be NULL if the application hasn't already started. Use this fact
+         * to select the starting fragment. In this case the HOME_SCREEN is selected. If the saved
+         * instance IS NOT NULL that means that the application has started and it's configuration
+         * or orientation has changed - forcing recreation of the class. In this case set the
+         * position and title to what it formerly was using the saved instance.
+         */
+        if (savedInstanceState == null) {
+            selectItem(HOME_SCREEN);
+        } else {
+            // if there was a previous state, recover the title that was shown in the action bar
+            current_position = savedInstanceState.getInt("position");
+            setActionBarTitle(current_position);
+        }
+
+        /**
+         * Handle events related to the nav drawer opening and closing. In this case the drawer
+         * icon is synced when it is open/closed to show the hamburger menu or back button
+         * respectively. invalidateOptionsMenu() is included to be able to modify the visibility of
+         * ActionBar items in the future.
+         */
+        drawer_toggle = new ActionBarDrawerToggle(
+                this,
+                drawer_layout,
+                R.string.open_drawer,
+                R.string.close_drawer
+        ) {
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                invalidateOptionsMenu();
+                drawer_toggle.syncState();
+            }
+            public void onDrawerOpened(View view) {
+                super.onDrawerClosed(view);
+                invalidateOptionsMenu();
+                drawer_toggle.syncState();
+            }
+        };
+
+
+        /**
+         * Add a listener that waits for the navigation bar's state to change between open and
+         * closed. When that occurs execute the drawer_toggle listener.
+         */
+        // NOTE: DrawerLayout.setDrawerListener is deprecated, use addDrawerListener instead
+        // drawer_layout.setDrawerListener(drawer_toggle);
+        drawer_layout.addDrawerListener(drawer_toggle);
+
+        /**
+         * The fragment onBackStackChanged listener is used to update the title when
+         * the back button is pressed.
+         */
+        getFragmentManager().addOnBackStackChangedListener(
+                new FragmentManager.OnBackStackChangedListener() {
+                    @Override
+                    public void onBackStackChanged() {
+                        FragmentManager frag_mgr = getFragmentManager();
+                        Fragment fragment = frag_mgr.findFragmentByTag("last_in");
+                        if (fragment instanceof HomeScrollingFragment) {
+                            current_position = 0;
+                        }
+                        if (fragment instanceof TestFragment) {
+                            current_position = 1;
+                        }
+                        setActionBarTitle(current_position);
+                        drawer_list.setItemChecked(current_position, true);
+                    }
+                }
+        );
+    }
+
+    /**
+     * This method swaps the fragments based on the position passed in.
+     * @param position the position in the navigation list view
+     */
     private void selectItem(int position) {
 
+        if (position != 0 && position == current_position) return;
         current_position = position;
-
         Fragment fragment = null;
 
-        switch (position) {
+        switch (current_position) {
             case 1:
                 // set About fragment
+                String testOne = "TestOne";
+                String testTwo = "TestTwo";
+                fragment = TestFragment.newInstance(testOne, testTwo);
+                changeFragment(fragment);
                 break;
             case 2:
                 // set Help fragment
@@ -83,25 +202,52 @@ public class MainActivity extends Activity {
                 // set Terms fragment
                 break;
             default:
-                // set Main fragment
-                String testOne = "TestOne";
-                String testTwo = "TestTwo";
-                fragment = TestFragment.newInstance(testOne, testTwo);
+                /**
+                 * The default case is to select the HOME fragment, or position 0 in the menu.
+                 * When this fragment is chosen the backstack is cleared. In this case, pressing
+                 * the back button while the HOME fragment is displayed will exit the app.
+                 */
+                FragmentManager fm = getFragmentManager();
+                if (fm.getBackStackEntryCount() > 0) {
+                    fm.popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
+                fragment = new HomeScrollingFragment();
+                changeFragment_noBackStack(fragment);
         }
 
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-
         // Set the title of the action bar to the title of the navigation item
-        setActionBarTitle(position);
+        setActionBarTitle(current_position);
 
         // Close the navigation drawer after a selection has been made
         drawer_layout.closeDrawer(drawer_list);
     }
 
+    /**
+     * Convenience function that swaps in a new fragment, adding it to the back stack
+     * @param fragment fragment to be swapped in
+     */
+    private void changeFragment(Fragment fragment) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment, "last_in");
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+    /**
+     * Convenience function that swaps in a new fragment, without adding it to the back stack
+     * @param fragment fragment to be swapped in
+     */
+    private void changeFragment_noBackStack(Fragment fragment) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment, "last_in");
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    /**
+     * Sets the title in the action bar based on the position passed in.
+     * @param position the position in the nav menu
+     */
     private void setActionBarTitle(int position) {
         String title;
         if (position == 0 ) {
@@ -113,64 +259,13 @@ public class MainActivity extends Activity {
         getActionBar().setTitle(title);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        nav_items = getResources().getStringArray(R.array.nav_items);
-        drawer_list = findViewById(R.id.drawer);
-        drawer_layout = findViewById(R.id.drawer_layout);
-
-        // enable the nav drawer's hamburger and back icons
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-
-        // Populate ListView from values inside the string-array
-        drawer_list.setAdapter(new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_activated_1,
-                nav_items
-        ));
-
-        // attached the custom on click listener
-        drawer_list.setOnItemClickListener(new DrawerItemClickListener());
-
-        // show the home fragment by default (if there is no past saved state)
-        if (savedInstanceState == null) {
-            selectItem(0);
-        } else {
-            // if there was a previous state, recover the title that was shown in the action bar
-            current_position = savedInstanceState.getInt("position");
-            setActionBarTitle(current_position);
-        }
-
-        // Handle events related to the nav drawer opening and closing
-        drawer_toggle = new ActionBarDrawerToggle(
-                this,
-                drawer_layout,
-                R.string.open_drawer,
-                R.string.close_drawer
-        ) {
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu();
-                drawer_toggle.syncState();
-
-            }
-
-            public void onDrawerOpened(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu();
-                drawer_toggle.syncState();
-            }
-        };
-
-        // NOTE: DrawerLayout.setDrawerListener is deprecated, use addDrawerListener instead
-        drawer_layout.addDrawerListener(drawer_toggle);
-    }
-
-    // Inflate the action bar menu
+    /**
+     * This method displays the ActionBar menu at the top of the window. The menu resource is
+     * inflated from the main_menu.xml file. Additional icons, buttons, and collapsable menu can
+     * be defined here or in the menu xml files
+     * @param menu a reference to the menu passed in by the android system
+     * @return must return true for the menu to display (i believe)
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -183,27 +278,42 @@ public class MainActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    // Handle action bar item click events
+    /**
+     * Handles onClick events associated with ActionBar items
+     * @param item the menu item within the menu that was clicked
+     * @return must return true on success
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /**
+         * The DrawerLayout handles its click events using the ActionBarToggle class.
+         */
         if (drawer_toggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    // sync the ActionBarToggle with the state of the navigation drawer
+    /**
+     * This lifecycle method is called after the app is completing running. As an extra precaution
+     * the nav drawer's state is synced here.
+     * @param savedInstanceState the activity's saved state, used to recover settings on recreation.
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         drawer_toggle.syncState();
     }
 
-    // pass configuration state changes (such as rotate) to the ActionBarToggle
+    /**
+     * The DrawerLayout handles its own state when the app is destroyed and recreated during the
+     * configuration change process (such as rotating the device). Passing the Configuration
+     * object to the drawer_toggle's onConfigurationChanged method handles all of the details.
+     * @param newConfig Configuration passed from the android system
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
         drawer_toggle.onConfigurationChanged(newConfig);
     }
 
