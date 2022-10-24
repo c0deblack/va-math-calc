@@ -8,8 +8,13 @@ package com.nof.vamathcalculator;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import android.support.v4.content.ContextCompat;
+import android.support.v7.view.menu.ActionMenuItemView;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -43,6 +48,16 @@ public class MainActivity extends Activity {
     private DrawerLayout drawer_layout; // holds a reference to the nav drawer itself
     private ActionBarDrawerToggle drawer_toggle; // a reference to the drawer toggle event object
     private int current_position = 0;
+    private Menu action_menu = null;
+
+    /**
+     * Keeps track of the state of the navigation menu.
+     */
+    private enum NavDrawerState {
+        STATE_OPEN,
+        STATE_CLOSED
+    }
+    NavDrawerState nav_drawer_state = NavDrawerState.STATE_CLOSED;
 
     /**
      * Implement an onItemClickListener used by the ListView. When an item within the nav menu
@@ -85,8 +100,8 @@ public class MainActivity extends Activity {
          * These calls enable icons in the navigation drawer. The hamburger icon is displayed when
          * the nav menu is closed, and a back icon is displayed when the navigation menu is open
          */
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(false);
+        getActionBar().setHomeButtonEnabled(false);
 
         /**
          * Array Adapters generate a ListView from an array. In this case the array nav_items holds
@@ -116,6 +131,9 @@ public class MainActivity extends Activity {
         } else {
             // if there was a previous state, recover the title that was shown in the action bar
             current_position = savedInstanceState.getInt("position");
+            nav_drawer_state = (NavDrawerState) savedInstanceState
+                    .getSerializable("nav_drawer_state");
+
             setActionBarTitle(current_position);
         }
 
@@ -133,13 +151,13 @@ public class MainActivity extends Activity {
         ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                invalidateOptionsMenu();
-                drawer_toggle.syncState();
+                //invalidateOptionsMenu();
+                //drawer_toggle.syncState();
             }
             public void onDrawerOpened(View view) {
                 super.onDrawerClosed(view);
-                invalidateOptionsMenu();
-                drawer_toggle.syncState();
+                //invalidateOptionsMenu();
+                //drawer_toggle.syncState();
             }
         };
 
@@ -173,6 +191,12 @@ public class MainActivity extends Activity {
                     }
                 }
         );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nav_icon_sync_state();
     }
 
     /**
@@ -231,6 +255,10 @@ public class MainActivity extends Activity {
 
         // Close the navigation drawer after a selection has been made
         drawer_layout.closeDrawer(drawer_list);
+
+        // sync the nav bar icon
+        nav_drawer_state = NavDrawerState.STATE_CLOSED;
+        nav_icon_sync_state();
     }
 
     /**
@@ -280,11 +308,16 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
+        /**
+         * Store a reference to the menu for later use.
+         */
+        this.action_menu = menu;
+
         // Inflate the menu defined in main_menu.xml
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
-        View view = findViewById(android.R.id.home);
-        view.setPadding(20, 0, 10 ,0);
+        //View view = findViewById(android.R.id.home);
+        //view.setPadding(20, 0, 10 ,0);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -302,6 +335,19 @@ public class MainActivity extends Activity {
         if (drawer_toggle.onOptionsItemSelected(item)) {
             return true;
         }
+
+        if (item != null && item.getItemId() == R.id.drawer_menu_icon) {
+            if (drawer_layout.isDrawerOpen(Gravity.RIGHT)) {
+                drawer_layout.closeDrawer(Gravity.RIGHT);
+                nav_drawer_state = NavDrawerState.STATE_CLOSED;
+                nav_icon_sync_state();
+            } else {
+               drawer_layout.openDrawer(Gravity.RIGHT);
+               nav_drawer_state = NavDrawerState.STATE_OPEN;
+                nav_icon_sync_state();
+            }
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -313,7 +359,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        drawer_toggle.syncState();
+        //drawer_toggle.syncState();
     }
 
     /**
@@ -325,7 +371,7 @@ public class MainActivity extends Activity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        drawer_toggle.onConfigurationChanged(newConfig);
+        //drawer_toggle.onConfigurationChanged(newConfig);
     }
 
     // Save state on configuration change
@@ -333,11 +379,35 @@ public class MainActivity extends Activity {
     public void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
         state.putInt("position", current_position);
+        state.putSerializable("nav_drawer_state", nav_drawer_state);
     }
 
     // Hide/show action bar items based on navigation menu state
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void nav_icon_sync_state() {
+        if(this.action_menu != null) {
+            switch(nav_drawer_state) {
+                case STATE_OPEN:
+                    // change R.id.drawer_menu_icon icon resource to up button
+                    this.action_menu.findItem(R.id.drawer_menu_icon)
+                            //.setIcon(hamburger_icon);
+                            .setIcon(R.drawable.drawer_menu_up_icon);
+                    break;
+                case STATE_CLOSED:
+                    // change R.id.drawer_menu_icon icon resource to up button
+                    this.action_menu.findItem(R.id.drawer_menu_icon)
+                            //.setIcon(up_icon);
+                            .setIcon(R.drawable.drawer_menu_icon);
+                default:
+                    Log.wtf("nav_icon_sync_state", "The Nav drawer is not in a known state." +
+                            "The state value = " + nav_drawer_state.toString());
+            }
+        } else {
+            Log.e("nav_icon_sync_state", "Cannot sync the navigation icon. The menu does not exist.");
+        }
     }
 }
