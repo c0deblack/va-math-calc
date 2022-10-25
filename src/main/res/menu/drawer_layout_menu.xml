@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+--><menu xmlns:android="http://schemas.android.com/apk/res/android">
 <!-- TODO: Setup string resources instead of string literals -->
     <item
         android:id="@+id/fragment_home"
         android:title="Home" />
     <item
         android:id="@+id/fragment_references"
-        android:title="External References" />
+        android:title="External Resources" />
     <item
         android:id="@+id/fragment_settings"
         android:title="Settings" />

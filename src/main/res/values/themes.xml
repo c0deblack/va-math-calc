@@ -3,10 +3,41 @@
 <!--
  * by c0deblack 2022
  * https://github.com/c0deblack
+ *
+ * Contributors:
+ * sgillis5: https://github.com/sgillis5
 -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!--
+    *
+    * NEW THEMES
+    *
+    * -->
+
+    <!-- FRAGMENT RESOURCES -->
+
+    <style name="Theme.Resources" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--
+    *
+    * OLD THEMES
+    *
+    * -->
     <style name="Theme.VAMathCalculator" parent="android:Theme.Holo.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>

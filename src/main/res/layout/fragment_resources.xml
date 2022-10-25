@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * by sgillis5 2022
+ * https://github.com/sgillis5
+ *
+ * Contributors:
+ * c0deblack: https://github.com/c0deblack
+-->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.Resources"
+    android:layout_marginBottom="100dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".FragmentResources"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="2dp">
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="75dp"
+            android:text="@string/fileClaim_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/message2"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/fileClaim_howTo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message" />
+
+        <TextView
+            android:id="@+id/message3"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/fileClaim_fileOnline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message2" />
+
+        <TextView
+            android:id="@+id/message4"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/fileClaim_claimStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message3" />
+
+        <TextView
+            android:id="@+id/message5"
+            android:layout_width="367dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/fileClaim_helpPhone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message4" />
+
+        <TextView
+            android:id="@+id/message6"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="337dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_title"
+            app:layout_constraintBottom_toTopOf="@+id/message7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/message7"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_VA"
+            app:layout_constraintBottom_toTopOf="@+id/message8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message6" />
+
+        <TextView
+            android:id="@+id/message8"
+            android:layout_width="367dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_vaPhone"
+            app:layout_constraintBottom_toTopOf="@+id/message9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message7" />
+
+        <TextView
+            android:id="@+id/message9"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_stateVA"
+            app:layout_constraintBottom_toTopOf="@+id/message10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message8" />
+
+        <TextView
+            android:id="@+id/message10"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_DAV"
+            app:layout_constraintBottom_toTopOf="@+id/message11"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message9" />
+
+        <TextView
+            android:id="@+id/message11"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_lifeline"
+            app:layout_constraintBottom_toTopOf="@+id/message12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message10" />
+
+        <TextView
+            android:id="@+id/message12"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_suicideLifeline"
+            app:layout_constraintBottom_toTopOf="@+id/message13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message11" />
+
+        <TextView
+            android:id="@+id/message13"
+            android:layout_width="367dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/additionalResources_suicideHotline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message12" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+-->
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -58,9 +63,9 @@
 
     <fragment
         android:id="@+id/fragment_references"
-        android:name="com.nof.vamathcalculator.FragmentReferences"
+        android:name="com.nof.vamathcalculator.FragmentResources"
         android:label="@string/references_fragment_label"
-        tools:layout="@layout/fragment_references">
+        tools:layout="@layout/fragment_resources">
     </fragment>
 
     <fragment
