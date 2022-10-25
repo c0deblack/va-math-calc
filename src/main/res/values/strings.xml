@@ -76,6 +76,54 @@
         Total Compensation: TOTAL COMPENSATION RATE\n
         ________________________________________________
     </string>
+
     <string name="bottom_toolbar_home_text">Home</string>
     <string name="bottom_toolbar_resources_text">Resources</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_home">ActivityHome</string>
+
+
+    <!-- new component strings -->
+
+    <!-- ACTIVITY HOME -->
+    <!-- TODO: add floating button text description -->
+    <string name="home_activity_floating_action_bar_button">TODO</string>
+
+
+    <!-- FRAGMENT HOME -->
+    <string name="home_fragment_label">VA Math Calculator</string>
+    <string name="next">Next</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+
+
+    <!-- FRAGMENT ABOUT -->
+    <string name="about_fragment_label">About</string>
+    <string name="previous">Previous</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <!-- FRAGMENT HELP -->
+    <string name="help_fragment_label">Help</string>
+
+
+    <!-- FRAGMENT PRIVACY -->
+    <string name="privacy_fragment_label">Privacy and Data</string>
+
+
+    <!-- FRAGMENT SETTINGS -->
+    <string name="settings_fragment_label">Settings</string>
+
+
+    <!-- FRAGMENT TERMS  -->
+    <string name="terms_fragment_label">Terms of Use</string>
+
+    <!-- FRAGMENT REFERENCES  -->
+    <string name="references_fragment_label">External References</string>
+
+
+    <!-- FRAGMENT REFERENCES  -->
+    <string name="clear_fragment_label">Clear All Data</string>
+
+
 </resources>

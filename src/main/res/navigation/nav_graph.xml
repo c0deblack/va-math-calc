@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.nof.vamathcalculator.FragmentHome"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home"
+        >
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/fragment_about" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_about"
+        android:name="com.nof.vamathcalculator.FragmentAbout"
+        android:label="@string/about_fragment_label"
+        tools:layout="@layout/fragment_about">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/fragment_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_help"
+        android:name="com.nof.vamathcalculator.FragmentHelp"
+        android:label="@string/help_fragment_label"
+        tools:layout="@layout/fragment_help">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_privacy"
+        android:name="com.nof.vamathcalculator.FragmentPrivacy"
+        android:label="@string/privacy_fragment_label"
+        tools:layout="@layout/fragment_privacy">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.nof.vamathcalculator.FragmentSettings"
+        tools:layout="@layout/fragment_settings"
+        android:label="@string/settings_fragment_label">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_terms"
+        android:name="com.nof.vamathcalculator.FragmentTerms"
+        android:label="@string/terms_fragment_label"
+        tools:layout="@layout/fragment_terms">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_references"
+        android:name="com.nof.vamathcalculator.FragmentReferences"
+        android:label="@string/references_fragment_label"
+        tools:layout="@layout/fragment_references">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_clear"
+        android:name="com.nof.vamathcalculator.FragmentClearAllData"
+        android:label="@string/clear_fragment_label"
+        tools:layout="@layout/fragment_clear_all_data">
+    </fragment>
+
+</navigation>

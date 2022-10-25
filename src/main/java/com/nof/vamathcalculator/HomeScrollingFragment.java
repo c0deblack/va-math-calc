@@ -1,14 +1,13 @@
 package com.nof.vamathcalculator;
 
-import android.annotation.SuppressLint;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * This fragment loads the Home fragment layout. It is bear now, but it will soon have references
