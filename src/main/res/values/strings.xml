@@ -76,4 +76,6 @@
         Total Compensation: TOTAL COMPENSATION RATE\n
         ________________________________________________
     </string>
+    <string name="bottom_toolbar_home_text">Home</string>
+    <string name="bottom_toolbar_resources_text">Resources</string>
 </resources>
