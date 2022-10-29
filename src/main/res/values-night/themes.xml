@@ -46,25 +46,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.VAMathCalculator.Fullscreen" parent="Theme.VAMathCalculator">
-        <item name="android:actionBarStyle">
-            @style/Widget.Theme.VAMathCalculator.ActionBar.Fullscreen
-        </item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-    </style>
-
-    <style name="ThemeOverlay.VAMathCalculator.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
-    </style>
-
-    <style name="Theme.VAMathCalculator.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.VAMathCalculator.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.VAMathCalculator.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

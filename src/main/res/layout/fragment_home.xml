@@ -1,28 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!--
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragment_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentHome">
-
+    tools:context=".FragmentHome"
+    android:orientation="vertical"
+    >
+<!--
     <TextView
-        android:id="@+id/textview_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/home_header_placeholder_text"
+        android:background="@color/teal_200"
+        android:textSize="10sp"/>
+-->
 
-    <Button
-        android:id="@+id/button_first"
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/fragment_home_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+<!--
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/home_sticky_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@color/light_blue_A200"
+        android:name="com.nof.vamathcalculator.FragmentHome_DependencySummaryFragment"
+        />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/home_scroll_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:name="com.nof.vamathcalculator.FragmentHome_DisabilitySummaryScrollFragment"
+        />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/home_compensation_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:name="com.nof.vamathcalculator.FragmentHome_CompensationSummaryFragment"
+        />
+-->
+</LinearLayout>

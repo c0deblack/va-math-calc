@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp"
+    android:elevation="8dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+        <TextView
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:id="@+id/disability_short_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Short Name"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            />
+        <TextView
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:id="@+id/disability_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disability Rate: "
+            android:layout_alignLeft="@id/disability_short_desc"
+            android:layout_below="@id/disability_short_desc"
+            />
+        <TextView
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:id="@+id/disability_bilateral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bilateral"
+            android:layout_toRightOf="@id/disability_rate"
+            android:layout_below="@id/disability_short_desc"
+            />
+        <Button
+            android:id="@+id/disability_edit"
+            android:layout_toLeftOf="@+id/disability_delete"
+            android:layout_alignParentBottom="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:layout_below="@id/disability_bilateral"
+            android:id="@+id/disability_delete"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
