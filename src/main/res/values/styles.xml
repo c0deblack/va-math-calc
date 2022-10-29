@@ -5,12 +5,78 @@
 
 <resources>
 
-    <style name="Widget.Theme.VAMathCalculator.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
+    <style name="VAMathCalculator.Form.Header" parent="@style/TextAppearance.MaterialComponents.Headline4">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/design_default_color_primary</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
-    <style name="Widget.Theme.VAMathCalculator.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
-        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    <style name="VAMathCalculator.Form.Prompt" parent="@style/TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_gravity">center</item>
     </style>
+
+    <style name="VAMathCalculator.Form.Body" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:padding">20dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+
+
+
+    <!-- SPINNERS -->
+    <style name="VAMathCalculator.Form.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+    <style name="VAMathCalculator.Form.Spinner.Text" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="VAMathCalculator.Form.Spinner.Dropdown" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/spinner_selector_dependency_list</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- this style must be applied in the theme -->
+    <style name="VAMathCalculator.Form.Spinner.Dropdown.Divider" parent="Widget.Material3.MaterialDivider">
+        <item name="android:divider">#123456</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+
+
+    <!-- Disability Summary Recycler View -->
+    <style name="word_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:background">@android:color/holo_orange_light</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+    </style>
+
 </resources>

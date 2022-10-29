@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FragmentHome_CompensationSummaryFragment">
+
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:text="@string/home_compensation_content_placeholder_text" />
+    -->
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_home_compensation_summary_content_reward"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.nof.vamathcalculator.FragmentHome_CompensationSummaryFragment_Reward"
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_home_compensation_summary_content_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.nof.vamathcalculator.FragmentHome_CompensationSummaryFragment_Description"
+        />
+</LinearLayout>

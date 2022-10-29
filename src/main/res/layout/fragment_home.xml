@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+-->
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,40 +13,55 @@
     tools:context=".FragmentHome"
     android:orientation="vertical"
     >
-
+<!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_header_placeholder_text"
         android:background="@color/teal_200"
         android:textSize="10sp"/>
+-->
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/fragment_home_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+<!--
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/home_sticky_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_blue_A200"
+        android:name="com.nof.vamathcalculator.FragmentHome_DependencySummaryFragment"
         />
 
-    <ScrollView
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/home_scroll_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="false"
-        >
-        <FrameLayout
-            android:id="@+id/home_scroll_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+        android:name="com.nof.vamathcalculator.FragmentHome_DisabilitySummaryScrollFragment"
+        />
 
-    </ScrollView>
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/home_compensation_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_200"
+        android:name="com.nof.vamathcalculator.FragmentHome_CompensationSummaryFragment"
         />
-
+-->
 </LinearLayout>

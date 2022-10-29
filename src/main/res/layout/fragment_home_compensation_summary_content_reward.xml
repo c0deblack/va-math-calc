@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentHome_CompensationSummaryFragment_Reward">
+
+    <TextView
+        android:id="@+id/fragment_compensation_summary_reward_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Your Monthly Compensation"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="$ 0.00"
+        android:textColor="#00A51F"
+        android:layout_marginTop="?android:actionBarSize"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+        />
+
+</RelativeLayout>

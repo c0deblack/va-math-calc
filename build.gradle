@@ -5,8 +5,6 @@ plugins {
 android {
     namespace 'com.nof.vamathcalculator'
     compileSdk 32
-    android.useAndroidX=true
-    android.enableJetifier=true
 
     defaultConfig {
         applicationId "com.nof.vamathcalculator"

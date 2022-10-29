@@ -21,9 +21,6 @@ Add to root element for right-to-left drawer menu
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ActivityHome"
@@ -37,15 +34,13 @@ Add to root element for right-to-left drawer menu
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                android:background="?android:attr/colorPrimary"
-                android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
                 />
 
         </com.google.android.material.appbar.AppBarLayout>
 
 
-        <include layout="@layout/content_activity_home" />
+        <include layout="@layout/activity_home_content" />
+
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_appbar"
             android:layout_width="match_parent"
@@ -67,16 +62,6 @@ Add to root element for right-to-left drawer menu
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@android:drawable/ic_input_add"
-            android:contentDescription="@string/home_activity_floating_action_bar_button"
-            app:layout_anchor="@id/bottom_appbar"
-            />
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
@@ -84,7 +69,7 @@ Add to root element for right-to-left drawer menu
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:menu="@menu/drawer_layout_menu"
