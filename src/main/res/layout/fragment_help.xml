@@ -5,12 +5,55 @@
     android:layout_height="match_parent"
     tools:context=".FragmentHelp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="What’s a disability rating?"
+        android:textStyle="bold" />
 
-    <!-- comment test -->
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="40dp"
+        android:text="Disability ratings are based on the severity of your disability. The VA express this rating as a percentage, representing how much your disability decreases your overall health and ability to function.
+\nThen, they use your disability rating to determine your disability compensation rate, so we can calculate how much money you’ll receive from us each month.
+" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="40dp"
+        android:text="How does the VA determine combined VA disability ratings?"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="40dp"
+        android:text="Calculating your combined disability rating involves more than adding up your individual ratings. That’s why your combined rating may be different from the sum of your individual ratings. The VA takes percentages of percentages.
+        \n
+        \nFor example: Let’s say you are a veteran with two 10% ratings. The first rating will be 10% of 100 (which is 10%), leaving you with a 90% “healthy“ percentage. The second 10 rating will be 10% of the 90% (healthy percentage), which is 9%. The combined rating would be 19%. It is then rounded up or down. In this case, it would be rounded to 20%.
+        " />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="40dp"
+        android:text="For more information visit: \nwww.va.gov/disability/about-disability-ratings" />
 
 </FrameLayout>
