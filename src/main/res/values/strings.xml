@@ -65,7 +65,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
 
     <string name="fragment_home_compensation_summary_content_disclaimer_text">
-        Values based on the 2022 Veteran Affairs compensation tables. The calculator estimates your basic and special monthly compensation (SMC) rates. For other further details and information about other benefits please refer to www.va.gov. Estimates only, see Terms for more information.
+        Values based on the 2022 Veteran Affairs compensation tables. The calculator estimates your basic and special monthly compensation (SMC) rates. For further details and information about other benefits please refer to www.va.gov. Estimates only, see Terms for more information.
     </string>
     <string name="fragment_home_compensation_summary_content_disclaimer_text_url">
         https://www.va.gov/disability/compensation-rates/
@@ -119,7 +119,7 @@
     <string name="dependency_summary_spouse_body">Having a spouse increases your compensation rate.</string>
     <string name="dependency_summary_children_header">Dependent Children</string>
     <string name="dependency_summary_children_text">How many children under the age of 18 do you have?</string>
-    <string name="dependency_summary_children_description">Veterans qualify for addition monthly compensation if they have dependent children.</string>
+    <string name="dependency_summary_children_description">Veterans qualify for additional monthly compensation if they have dependent children.</string>
     <string name="dependency_summary_child_education_text">How many children between the ages 18 and 23 do you have in a qualifying school program?</string>
     <string name="dependency_summary_child_education_description">If you have children attending college you may be eligible for an addition benefit added to your monthly compensation. For details about other educational assistance programs that won\'t impact your monthly compensation, such as the GI Bill, click here.</string>
     <string name="dependency_summary_child_education_description_text_to_link">here</string>
