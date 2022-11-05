@@ -152,6 +152,8 @@
 
     <!-- FRAGMENT PRIVACY -->
     <string name="privacy_fragment_label">Privacy and Data</string>
+    <string name="privacy_fragment_collection">WHAT INFORMATION DO WE COLLECT?  Android Space does not collect any data from users through the VA Math Calculator, which means there is no collecting, storing, transferring, sharing, or selling of any user data internally or with third parties, including domestic or internationally. We do not use any tracking methods. We do not utilize any form of logins, including social logins.</string>
+    <string name="privacy_fragment_contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE? If you have any questions or comments about this notice, please submit an email to inquries@androidspace.com.</string>
 
 
     <!-- FRAGMENT SETTINGS -->
