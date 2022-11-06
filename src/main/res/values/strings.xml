@@ -161,21 +161,38 @@
     <!-- FRAGMENT TERMS  -->
     <string name="terms_fragment_label">Terms of Use</string>
 
+
     <!-- FRAGMENT RESOURCES  -->
     <string name="references_fragment_label">External Resources</string>
     <string name="fileClaim_title">Help with Disability Claims</string>
-    <string name="fileClaim_howTo"><a href="https://www.va.gov/disability/how-to-file-claim">How to File a VA Disability Claim</a></string>
-    <string name="fileClaim_fileOnline"><a href="https://www.va.gov/disability/file-disability-claim-form-21-526ez/introduction">How to File for Disability Online with VA Form 21-526EZ</a></string>
+    <string name="fileClaim_howTo_text_description">How to File a VA Disability Claim</string>
+    <string name="fileClaim_howTo_text_to_link">How to File a VA Disability Claim</string>
+    <string name="fileClaim_howTo_text_url">https://www.va.gov/disability/how-to-file-claim</string>
+    <string name="fileClaim_fileOnline_text_description">How to File for Disability Online with VA Form 21-526EZ</string>
+    <string name="fileClaim_fileOnline_text_to_link">How to File for Disability Online with VA Form 21-526EZ</string>
+    <string name="fileClaim_fileOnline_text_url">https://www.va.gov/disability/file-disability-claim-form-21-526ez/introduction</string>
     <string name="fileClaim_helpPhone">For Help Filing a Disability Claim Phone Number: (800) 827-1000, or TTY 711 for hearing impaired</string>
-    <string name="fileClaim_claimStatus"><a href="https://www.va.gov/claim-or-appeal-status">Track the Status of a Disability Claim or Appeal</a></string>
+    <string name="fileClaim_claimStatus_text_description">Track the Status of a Disability Claim or Appeal</string>
+    <string name="fileClaim_claimStatus_text_to_link">Track the Status of a Disability Claim or Appeal</string>
+    <string name="fileClaim_claimStatus_text_url">https://www.va.gov/claim-or-appeal-status</string>
     <string name="additionalResources_title">Additional Resources for Veterans</string>
-    <string name="additionalResources_VA"><a href="https://www.va.gov">U.S. Department of Veterans Affairs</a></string>
+    <string name="additionalResources_VA_text_description">U.S. Department of Veterans Affairs</string>
+    <string name="additionalResources_VA_text_to_link">U.S. Department of Veterans Affairs</string>
+    <string name="additionalResources_VA_text_url">https://www.va.gov</string>
     <string name="additionalResources_vaPhone">U.S. Department of Veterans Affairs Phone Number: (800) 698-2411, or TTY 711 for hearing impaired</string>
-    <string name="additionalResources_stateVA"><a href="https://www.va.gov/about_va/state-dva-offices.asp">State Departments of Veterans Affairs</a></string>
-    <string name="additionalResources_DAV"><a href="https://dav.org">DAV – Disabled American Veterans Nonprofit Charity</a></string>
-    <string name="additionalResources_lifeline"><a href="https://nvf.org/veteran-resources">Lifeline for Vets National Veterans Foundation</a></string>
+    <string name="additionalResources_stateVA_text_description">State Departments of Veterans Affairs</string>
+    <string name="additionalResources_stateVA_text_to_link">State Departments of Veterans Affairs</string>
+    <string name="additionalResources_stateVA_text_url">https://www.va.gov/about_va/state-dva-offices.asp</string>
+    <string name="additionalResources_DAV_text_description">DAV – Disabled American Veterans Nonprofit Charity</string>
+    <string name="additionalResources_DAV_text_to_link">DAV – Disabled American Veterans Nonprofit Charity</string>
+    <string name="additionalResources_DAV_text_url">https://dav.org</string>
+    <string name="additionalResources_lifeline_text_description">Lifeline for Vets National Veterans Foundation</string>
+    <string name="additionalResources_lifeline_text_to_link">Lifeline for Vets National Veterans Foundation</string>
+    <string name="additionalResources_lifeline_text_url">https://nvf.org/veteran-resources</string>
     <string name="additionalResources_suicideHotline">Suicide Prevention Hotline: 988</string>
-    <string name="additionalResources_suicideLifeline"><a href="https://988lifeline.org/help-yourself/veterans">Suicide and Crisis Lifeline for Veterans</a></string>
+    <string name="additionalResources_suicideLifeline_text_description">Suicide and Crisis Lifeline for Veterans</string>
+    <string name="additionalResources_suicideLifeline_text_to_link">Suicide and Crisis Lifeline for Veterans</string>
+    <string name="additionalResources_suicideLifeline_text_url">https://988lifeline.org/help-yourself/veterans</string>
 
     <!-- FRAGMENT REFERENCES  -->
 
