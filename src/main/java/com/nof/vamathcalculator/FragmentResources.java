@@ -2,6 +2,7 @@ package com.nof.vamathcalculator;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -60,5 +61,76 @@ public class FragmentResources extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_resources, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        /*
+            Create hyperlinks for certain TextViews
+         */
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message2),
+                R.string.fileClaim_howTo_text_description,
+                R.string.fileClaim_howTo_text_to_link,
+                R.string.fileClaim_howTo_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message3),
+                R.string.fileClaim_fileOnline_text_description,
+                R.string.fileClaim_fileOnline_text_to_link,
+                R.string.fileClaim_fileOnline_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message4),
+                R.string.fileClaim_claimStatus_text_description,
+                R.string.fileClaim_claimStatus_text_to_link,
+                R.string.fileClaim_claimStatus_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message7),
+                R.string.additionalResources_VA_text_description,
+                R.string.additionalResources_VA_text_to_link,
+                R.string.additionalResources_VA_text_url
+        );
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message9),
+                R.string.additionalResources_stateVA_text_description,
+                R.string.additionalResources_stateVA_text_to_link,
+                R.string.additionalResources_stateVA_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message10),
+                R.string.additionalResources_DAV_text_description,
+                R.string.additionalResources_DAV_text_to_link,
+                R.string.additionalResources_DAV_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message11),
+                R.string.additionalResources_lifeline_text_description,
+                R.string.additionalResources_lifeline_text_to_link,
+                R.string.additionalResources_lifeline_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.message12),
+                R.string.additionalResources_suicideLifeline_text_description,
+                R.string.additionalResources_suicideLifeline_text_to_link,
+                R.string.additionalResources_suicideLifeline_text_url
+        );
     }
 }
