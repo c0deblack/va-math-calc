@@ -1,6 +1,13 @@
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 package com.nof.vamathcalculator.db;
 
+// TODO: use an enumeration to create a Rating Type
 public class VAColumns {
+    private VAColumns(){}
+
     public final static String DEPEND_STATUS_COL_NAME = "depend_status";
 
     public static class BasicColumns {
@@ -29,4 +36,30 @@ public class VAColumns {
         public static final String SMC_S = "SMC_S";
     }
 
+    public static class UserColumns {
+        public static final String HAS_SMC      = "HAS_SMC";
+        public static final String SMC_RATING   = "SMC_RATING";
+        public static final String BASIC_RATING = "BASIC_RATING";
+        public static final String HAS_SPOUSE   = "HAS_SPOUSE";
+        public static final String NUM_PARENTS  = "NUM_PARENTS";
+        public static final String NUM_CHILDREN = "NUM_CHILDREN";
+        public static final String NUM_CHILD_EDUCATION = "NUM_CHILD_EDUCATION";
+        public static final String NUM_CHILD_DEFECT = "NUM_CHILD_DEFECT";
+        public static final String REQUIRES_AID = "REQUIRES_AID";
+    }
+
+        public static class DisabilityColumns {
+            public static final String BASIC_RATING = "BASIC_RATING";
+            public static final String IS_BILATERAL = "BILATERAL";
+            public static final String SHORT_NAME   = "SHORT_NAME";
+            public static final String SMC_RATING   = "SMC_RATING";
+            public static final String IS_BASIC     = "IS_BASIC";
+        }
+
+    public static class ChildWithBirthDefectColumns {
+        public static final String COMPENSATION = "COMPENSATION";
+        public static final String LEVEL = "LEVEL";
+        public static final String SHORT_NAME   = "SHORT_NAME";
+        public static final String IS_SPINAFIDA = "IS_SPINAFIDA";
+    }
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentHome_DisabilitySummaryDialogue"
+    >
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/disability_dialogue_container"
+        android:visibility="invisible">
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/disability_dialogue_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/VAMathCalculator.Form.Header"
+            android:text="ADD A DISABILITY" />
+
+        <EditText
+            android:id="@+id/disability_dialogue_short_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
+            android:maxLength="100"
+            android:gravity="center_horizontal"
+            android:hint="Enter A Short Description" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VAMathCalculator.Form.Body"
+            android:text="Are you adding a Basic or Special Monthly Compensation (SMC) rating?" />
+        <Spinner
+            android:id="@+id/disability_dialogue_rating_type_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VAMathCalculator.Form.Spinner"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VAMathCalculator.Form.Body"
+            android:text="What is the disability rating?" />
+        <Spinner
+            android:id="@+id/disability_dialogue_rating_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VAMathCalculator.Form.Spinner"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VAMathCalculator.Form.Body"
+            android:text="Is the disability Bilateral?" />
+        <Spinner
+            android:id="@+id/disability_dialogue_bilateral_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VAMathCalculator.Form.Spinner"
+            />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</FrameLayout>
