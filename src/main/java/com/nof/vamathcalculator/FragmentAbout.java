@@ -11,7 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.nof.vamathcalculator.databinding.FragmentAboutBinding;
-
+/* test comment */
+/* test comment */
 public class FragmentAbout extends Fragment {
 
     private FragmentAboutBinding binding;
