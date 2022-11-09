@@ -127,6 +127,37 @@
         <item>100%</item>
     </string-array>
 
+    <string-array name="smc_ratings">
+        <item>SMC-L</item>
+        <item>SMC-L 1/2</item>
+        <item>SMC-M</item>
+        <item>SMC-M 1/2</item>
+        <item>SMC-N</item>
+        <item>SMC-N 1/2</item>
+        <item>SMC-O/P</item>
+        <item>SMC-R.1</item>
+        <item>SMC-R.2/T</item>
+        <item>SMC-S</item>
+    </string-array>
+
+    <string-array name="birth_defect_types">
+        <item>None</item>
+        <item>Spina Bifida</item>
+        <item>Other Birth Defect</item>
+    </string-array>
+
+    <string-array name="birth_defect_levels_spina_bifida">
+        <item>Level I</item>
+        <item>Level II</item>
+        <item>Level III</item>
+    </string-array>
+
+    <string-array name="birth_defect_levels_other">
+        <item>Level I</item>
+        <item>Level II</item>
+        <item>Level III</item>
+        <item>Level IV</item>
+    </string-array>
     <string name="clear_fragment_label">Clear All Data</string>
     <string name="dependency_summary_header_text">Add Your Dependents</string>
     <string name="dependency_summary_description_text">Use this form to enter your information about your dependents. Learn more about what who qualifies as a dependent here.</string>

@@ -38,7 +38,7 @@
             android:id="@+id/disability_bilateral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bilateral"
+            android:text=""
             android:layout_toEndOf="@id/disability_rate"
             android:layout_below="@id/disability_short_desc"
             />

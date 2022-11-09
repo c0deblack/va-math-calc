@@ -8,16 +8,20 @@ package com.nof.vamathcalculator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.nof.vamathcalculator.databinding.FragmentHomeDependencySummaryFragmentContentScrollFormBinding;
@@ -28,6 +32,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
 
     private FragmentHomeDependencySummaryFragmentContentScrollFormBinding binding;
     private VAMathViewModel data;
+    private static FragmentManager fragment_manager;
 
     public FragmentHome_DependencySummaryFragment_ScrollForm() {
         // Required empty public constructor
@@ -37,6 +42,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         data = new ViewModelProvider(requireActivity()).get(VAMathViewModel.class);
+        this.fragment_manager = getChildFragmentManager();
     }
 
     @Override
@@ -56,52 +62,51 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
 
         binding.getRoot().setVisibility(View.INVISIBLE);
 
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        Spinner daily_aid_spinner = binding.fragmentDependencySummaryDailyaidSpinner;
+        Spinner parent_spinner = binding.fragmentDependencySummaryParentsSpinner;
+        Spinner education_spinner = binding.fragmentDependencySummaryEducationSpinner;
+        Spinner child_spinner = binding.fragmentDependencySummaryChildSpinner;
+        Spinner married_spinner = binding.fragmentDependencySummaryMarriedSpinner;
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                //view.findViewById(R.id.fragment_dependency_summary_description_text),
+                binding.fragmentDependencySummaryDescriptionText,
+                R.string.dependency_summary_description_text,
+                R.string.dependency_summary_description_text_to_link,
+                R.string.dependency_summary_description_text_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                //view.findViewById(R.id.fragment_dependency_summary_child_education_description),
+                binding.fragmentDependencySummaryChildEducationDescription,
+                R.string.dependency_summary_child_education_description,
+                R.string.dependency_summary_child_education_description_text_to_link,
+                R.string.dependency_summary_child_education_description_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                //view.findViewById(R.id.fragment_dependency_summary_birth_defect),
+                binding.fragmentDependencySummaryBirthDefect,
+                R.string.dependency_summary_disabled_child_description,
+                R.string.dependency_summary_disabled_child_description_text_to_link,
+                R.string.dependency_summary_disabled_child_description_url
+        );
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                //view.findViewById(R.id.fragment_dependency_summary_child_aid_description),
+                binding.fragmentDependencySummaryChildAidDescription,
+                R.string.dependency_summary_child_aid_description,
+                R.string.dependency_summary_child_aid_description_text_to_link,
+                R.string.dependency_summary_child_aid_description_url
+        );
+
+        new Thread(new Runnable() {
             @Override
             public void run() {
-                        /*
-            Create hyperlinks for certain TextViews
-         */
-                VAUtils.LinkTextInViewFromResource(
-                        requireActivity(),
-                        //view.findViewById(R.id.fragment_dependency_summary_description_text),
-                        binding.fragmentDependencySummaryDescriptionText,
-                        R.string.dependency_summary_description_text,
-                        R.string.dependency_summary_description_text_to_link,
-                        R.string.dependency_summary_description_text_url
-                );
-
-                VAUtils.LinkTextInViewFromResource(
-                        requireActivity(),
-                        //view.findViewById(R.id.fragment_dependency_summary_child_education_description),
-                        binding.fragmentDependencySummaryChildEducationDescription,
-                        R.string.dependency_summary_child_education_description,
-                        R.string.dependency_summary_child_education_description_text_to_link,
-                        R.string.dependency_summary_child_education_description_url
-                );
-
-                VAUtils.LinkTextInViewFromResource(
-                        requireActivity(),
-                        //view.findViewById(R.id.fragment_dependency_summary_birth_defect),
-                        binding.fragmentDependencySummaryBirthDefect,
-                        R.string.dependency_summary_disabled_child_description,
-                        R.string.dependency_summary_disabled_child_description_text_to_link,
-                        R.string.dependency_summary_disabled_child_description_url
-                );
-
-                VAUtils.LinkTextInViewFromResource(
-                        requireActivity(),
-                        //view.findViewById(R.id.fragment_dependency_summary_child_aid_description),
-                        binding.fragmentDependencySummaryChildAidDescription,
-                        R.string.dependency_summary_child_aid_description,
-                        R.string.dependency_summary_child_aid_description_text_to_link,
-                        R.string.dependency_summary_child_aid_description_url
-                );
-
-
-                //Spinner married_spinner = view.findViewById(R.id.fragment_dependency_summary_married_spinner);
-                Spinner married_spinner = binding.fragmentDependencySummaryMarriedSpinner;
                 // Create an ArrayAdapter using the string array and a default spinner layout
                 ArrayAdapter<CharSequence> married_spinner_adapter = ArrayAdapter.createFromResource(
                         getContext(),
@@ -109,12 +114,9 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                         R.layout.fragment_home_spinner_depenency_list);
                 // Specify the layout to use when the list of choices appears
                 married_spinner_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                // Apply the adapter to the spinner
-                married_spinner.setAdapter(married_spinner_adapter);
 
 
-                //Spinner child_spinner = view.findViewById(R.id.fragment_dependency_summary_child_spinner);
-                Spinner child_spinner = binding.fragmentDependencySummaryChildSpinner;
+
                 // Create an ArrayAdapter using the string array and a default spinner layout
                 ArrayAdapter<CharSequence> child_spinner_adapter = ArrayAdapter.createFromResource(
                         getContext(),
@@ -122,12 +124,8 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                         R.layout.fragment_home_spinner_depenency_list);
                 // Specify the layout to use when the list of choices appears
                 child_spinner_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                // Apply the adapter to the spinner
-                child_spinner.setAdapter(child_spinner_adapter);
 
 
-                //Spinner education_spinner = view.findViewById(R.id.fragment_dependency_summary_education_spinner);
-                Spinner education_spinner = binding.fragmentDependencySummaryEducationSpinner;
                 // Create an ArrayAdapter using the string array and a default spinner layout
                 ArrayAdapter<CharSequence> education_spinner_adapter = ArrayAdapter.createFromResource(
                         getContext(),
@@ -135,12 +133,9 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                         R.layout.fragment_home_spinner_depenency_list);
                 // Specify the layout to use when the list of choices appears
                 education_spinner_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                // Apply the adapter to the spinner
-                education_spinner.setAdapter(education_spinner_adapter);
 
 
-                //Spinner parent_spinner = view.findViewById(R.id.fragment_dependency_summary_parents_spinner);
-                Spinner parent_spinner = binding.fragmentDependencySummaryParentsSpinner;
+
                 // Create an ArrayAdapter using the string array and a default spinner layout
                 ArrayAdapter<CharSequence> parent_spinner_adapter = ArrayAdapter.createFromResource(
                         getContext(),
@@ -148,12 +143,8 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                         R.layout.fragment_home_spinner_depenency_list);
                 // Specify the layout to use when the list of choices appears
                 parent_spinner_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                // Apply the adapter to the spinner
-                parent_spinner.setAdapter(parent_spinner_adapter);
 
 
-                //Spinner daily_aid_spinner = view.findViewById(R.id.fragment_dependency_summary_dailyaid_spinner);
-                Spinner daily_aid_spinner = binding.fragmentDependencySummaryDailyaidSpinner;
                 // Create an ArrayAdapter using the string array and a default spinner layout
                 ArrayAdapter<CharSequence> dailyaid_spinner_adapter = ArrayAdapter.createFromResource(
                         getContext(),
@@ -161,22 +152,35 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                         R.layout.fragment_home_spinner_depenency_list);
                 // Specify the layout to use when the list of choices appears
                 dailyaid_spinner_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                // Apply the adapter to the spinner
-                daily_aid_spinner.setAdapter(dailyaid_spinner_adapter);
 
-
-                data.get_user().observe(requireActivity(), new Observer<User>() {
+                requireActivity().runOnUiThread(new Runnable() {
                     @Override
-                    public void onChanged(User user) {
-                        married_spinner.setSelection(!user.has_spouse ? 0 : 1);
+                    public void run() {
+                        // Apply the adapter to the spinner
+                        daily_aid_spinner.setAdapter(dailyaid_spinner_adapter);
+                        // Apply the adapter to the spinner
+                        parent_spinner.setAdapter(parent_spinner_adapter);
+                        // Apply the adapter to the spinner
+                        education_spinner.setAdapter(education_spinner_adapter);
+                        // Apply the adapter to the spinner
+                        child_spinner.setAdapter(child_spinner_adapter);
+                        // Apply the adapter to the spinner
+                        married_spinner.setAdapter(married_spinner_adapter);
 
-                        child_spinner.setSelection(user.num_Child);
+                        data.get_user().observe(requireActivity(), new Observer<User>() {
+                            @Override
+                            public void onChanged(User user) {
+                                married_spinner.setSelection(!user.has_spouse ? 0 : 1);
 
-                        parent_spinner.setSelection(user.num_parents);
+                                child_spinner.setSelection(user.num_Child);
 
-                        education_spinner.setSelection(user.num_child_education);
+                                parent_spinner.setSelection(user.num_parents);
 
-                        daily_aid_spinner.setSelection(!user.has_aid ? 0 : 1);
+                                education_spinner.setSelection(user.num_child_education);
+
+                                daily_aid_spinner.setSelection(!user.has_aid ? 0 : 1);
+                            }
+                        });
                     }
                 });
 
@@ -185,10 +189,17 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                 parent_spinner.setOnItemSelectedListener(new parent_spinner_listener());
                 education_spinner.setOnItemSelectedListener(new education_spinner_listener());
                 daily_aid_spinner.setOnItemSelectedListener(new daily_aid_spinner_listener());
-                binding.getRoot().setVisibility(View.VISIBLE);
-
+                Button add_defect_btn = view.findViewById(R.id.add_disabled_child);
+                add_defect_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDialog();
+                    }
+                });
             }
-        });
+        }).start();
+
+        binding.getRoot().setVisibility(View.VISIBLE);
 
     }
 
@@ -302,5 +313,11 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
         }
+    }
+
+    private static void showDialog() {
+        // Create and show the dialog.
+        DialogFragment newFragment = FragmentHome_DependencySummaryDialogue_BirthDefect.newInstance(null, null);
+        newFragment.show(fragment_manager, "dialog");
     }
 }

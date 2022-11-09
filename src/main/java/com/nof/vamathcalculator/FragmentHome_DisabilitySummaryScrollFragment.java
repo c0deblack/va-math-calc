@@ -6,6 +6,7 @@ package com.nof.vamathcalculator;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,6 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
             public ViewHolder(View view) {
                 super(view);
                 // Define click listener for the ViewHolder's View
-
                 card_view = view.findViewById(R.id.textView);
                 short_desc = view.findViewById(R.id.disability_short_desc);
                 rating = view.findViewById(R.id.disability_rate);
@@ -74,31 +74,35 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                 edit_button = view.findViewById(R.id.disability_edit);
                 delete_button = view.findViewById(R.id.disability_delete);
 
-
-                delete_button.setOnClickListener(new View.OnClickListener() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onClick(View view) {
-                        int pos = getAdapterPosition();
-                        if(pos >= 0) {
-                            data.delete_disability(sorted_list.get(pos));
-                        } else {
-                            Log.e("DisabilitySummary", "Delete_Button: Cannot delete disability at position " + pos);
-                        }
-                    }
-                });
+                    public void run() {
+                        delete_button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int pos = getAdapterPosition();
+                                if(pos >= 0) {
+                                    data.delete_disability(sorted_list.get(pos));
+                                } else {
+                                    Log.e("DisabilitySummary", "Delete_Button: Cannot delete disability at position " + pos);
+                                }
+                            }
+                        });
 
-                edit_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        int pos = getAdapterPosition();
-                        if(pos >= 0) {
-                            int id = sorted_list.get(pos)._id;
-                            showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION.EDIT, id);
-                        } else {
-                            Log.e("DisabilitySummary", "Delete_Button: Cannot edit disability at position " + pos);
-                        }
+                        edit_button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int pos = getAdapterPosition();
+                                if(pos >= 0) {
+                                    int id = sorted_list.get(pos)._id;
+                                    showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION.EDIT, id);
+                                } else {
+                                    Log.e("DisabilitySummary", "Delete_Button: Cannot edit disability at position " + pos);
+                                }
+                            }
+                        });
                     }
-                });
+                }).start();
             }
             public CardView getTextView() {
                 return card_view;
@@ -139,25 +143,31 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
         // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-            Handler handler = new Handler();
-            handler.post(new Runnable() {
+            new Thread(new Runnable() {
                 @Override
                 public void run() {
                     Disability data = localDataSet.get(viewHolder.getAdapterPosition());
 
-                    // Get element from your dataset at this position and replace the
-                    // contents of the view with that element
-                    //viewHolder.getTextView().setText(localDataSet[position]);
+                    String rating;
+                    String bilat = "";
+                    if(data.is_basic){
+                        rating = "Rating: " + data.rating + "%";
+                        bilat = (data.is_bilateral) ? "Yes" : "No";
+                    } else {
+                        rating = "SMC Rating: " + data.smc_rating;
+                    }
 
-                    viewHolder.getDescView().setText("Description: " + data.short_name);
-
-                    String rating = "Rating: " + data.rating + "%";
-                    viewHolder.getRatingView().setText(rating);
-
-                    String bilat = (data.is_bilateral) ? "Yes" : "No";
-                    viewHolder.getBilateral().setText("Bilateral: " + bilat);
+                    String finalBilat = bilat;
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            viewHolder.getDescView().setText("Description: " + data.short_name);
+                            viewHolder.getBilateral().setText("Bilateral: " + finalBilat);
+                            viewHolder.getRatingView().setText(rating);
+                        }
+                    });
                 }
-            });
+            }).start();
         }
 
         // Return the size of your dataset (invoked by the layout manager)
@@ -180,6 +190,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
         sorted_list = new SortedList<>(Disability.class, new SortedList.Callback<Disability>() {
             @Override
             public int compare(Disability o1, Disability o2) {
+
                 if (o1.rating < o2.rating) {
                     return 1;
                 } else if (o1.rating > o2.rating) {
@@ -219,31 +230,42 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         binding = FragmentHomeDisabilitySummaryScrollContainerBinding.inflate(inflater, container, false);
-        //RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.disability_summary_recycler_view, container, false);
-        rv = binding.fragmentHomeDisabilitySummaryRecyclerView;
 
-        //binding.fab.setOnClickListener(view -> Snackbar.make(view, "Used to add new disabilities", Snackbar.LENGTH_LONG)
-         //       .setAction("Action", null).show());
-
-
-        //CustomAdapter adapter = new CustomAdapter(ratings);
-        adapter = new CustomAdapter(sorted_list);
-        rv.setAdapter(adapter);
-        data.get_disabilities().observe(requireActivity(), new Observer<List<Disability>>() {
+        new Thread(new Runnable() {
             @Override
-            public void onChanged(List<Disability> disabilities) {
-                //ratings = disabilities;
-                sorted_list.replaceAll(disabilities);
-                Log.e("Disabilities", "onChange: Disability added. "
-                + "Total number is: " + disabilities.size());
+            public void run() {
+                //RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.disability_summary_recycler_view, container, false);
+                rv = binding.fragmentHomeDisabilitySummaryRecyclerView;
+
+                //binding.fab.setOnClickListener(view -> Snackbar.make(view, "Used to add new disabilities", Snackbar.LENGTH_LONG)
+                //       .setAction("Action", null).show());
+
+                //CustomAdapter adapter = new CustomAdapter(ratings);
+                adapter = new CustomAdapter(sorted_list);
+                rv.setAdapter(adapter);
+
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        data.get_disabilities().observe(requireActivity(), new Observer<List<Disability>>() {
+                            @Override
+                            public void onChanged(List<Disability> disabilities) {
+                                //ratings = disabilities;
+                                sorted_list.replaceAll(disabilities);
+                                Log.e("Disabilities", "onChange: Disability added. "
+                                        + "Total number is: " + disabilities.size());
+                            }
+                        });
+                    }
+                });
+
+                //sorted_list.addAll(ratings);
+                LinearLayoutManager lm = new LinearLayoutManager(getContext());
+                rv.setLayoutManager(lm);
+                //return rv;
             }
-        });
-        //sorted_list.addAll(ratings);
-        LinearLayoutManager lm = new LinearLayoutManager(getContext());
-        rv.setLayoutManager(lm);
-        //return rv;
+        }).start();
 
         return binding.getRoot();
     }
@@ -255,19 +277,13 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
             int count = 0;
             @Override
             public void onClick(View view) {
-               // Disability new_dis = new Disability();
-               // new_dis.is_bilateral = false;
-               // new_dis.rating = 50d;
-               // new_dis.short_name = "A disability";
-               // new_dis.is_basic = true;
-               // data.insert_disability(new_dis);
                 showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION.CREATE,
                         null);
             }
         });
     }
 
-    static void showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION action, Integer row_id) {
+    private static void showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION action, Integer row_id) {
 
         row_id = (row_id == null) ? -1 : row_id;
         // Create and show the dialog.

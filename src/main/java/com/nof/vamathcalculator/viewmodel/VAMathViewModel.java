@@ -99,4 +99,6 @@ public class VAMathViewModel extends AndroidViewModel {
     public void delete_disability(Disability disability){
         data.deleteDisability(disability);
     }
+
+    public void update_disability(Disability... disabilities) { data.updateDisability(disabilities);}
 }
