@@ -19,14 +19,14 @@
 
     <style name="Theme.Resources" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/blue_80</item>
+        <item name="colorPrimaryDark">@color/blue_100</item>
+        <item name="colorAccent">@color/grey_80</item>
+        <item name="colorPrimaryVariant">@color/blue_80</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/red_100</item>
+        <item name="colorSecondaryVariant">@color/red_100</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
@@ -41,9 +41,9 @@
     * -->
     <style name="Theme.VAMathCalculator" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">@color/blue_80</item>
+        <item name="colorPrimaryDark">@color/blue_100</item>
+        <item name="colorAccent">@color/grey_80</item>
         <item name="android:fontFamily">@font/oxygen</item>
         <!-- Customize your theme here. -->
         <item name="android:dropDownListViewStyle">@style/VAMathCalculator.Form.Spinner.Dropdown.Divider</item>
