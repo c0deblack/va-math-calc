@@ -1,0 +1,364 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "21c6a48e3f770944d7763150ec393f67",
+    "entities": [
+      {
+        "tableName": "Basic_Rating",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `depend_status` TEXT, `RATING_10` REAL, `RATING_20` REAL, `RATING_30` REAL, `RATING_40` REAL, `RATING_50` REAL, `RATING_60` REAL, `RATING_70` REAL, `RATING_80` REAL, `RATING_90` REAL, `RATING_100` REAL)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "depend_status",
+            "columnName": "depend_status",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_10",
+            "columnName": "RATING_10",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_20",
+            "columnName": "RATING_20",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_30",
+            "columnName": "RATING_30",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_40",
+            "columnName": "RATING_40",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_50",
+            "columnName": "RATING_50",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_60",
+            "columnName": "RATING_60",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_70",
+            "columnName": "RATING_70",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_80",
+            "columnName": "RATING_80",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_90",
+            "columnName": "RATING_90",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating_100",
+            "columnName": "RATING_100",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SMC_Rating",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `depend_status` TEXT, `SMC_L` REAL, `SMC_L_1_2` REAL, `SMC_M` REAL, `SMC_M_1_2` REAL, `SMC_N` REAL, `SMC_N_1_2` REAL, `SMC_O_P` REAL, `SMC_R_1` REAL, `SMC_R_2` REAL, `SMC_S` REAL)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "depend_status",
+            "columnName": "depend_status",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_l",
+            "columnName": "SMC_L",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_l_1_2",
+            "columnName": "SMC_L_1_2",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_m",
+            "columnName": "SMC_M",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_m_1_2",
+            "columnName": "SMC_M_1_2",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_n",
+            "columnName": "SMC_N",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_n_1_2",
+            "columnName": "SMC_N_1_2",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_o_p",
+            "columnName": "SMC_O_P",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_r_1",
+            "columnName": "SMC_R_1",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_r_2",
+            "columnName": "SMC_R_2",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_s",
+            "columnName": "SMC_S",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_SMC_Rating_depend_status",
+            "unique": true,
+            "columnNames": [
+              "depend_status"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_SMC_Rating_depend_status` ON `${TABLE_NAME}` (`depend_status`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Disability",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `BASIC_RATING` REAL, `BILATERAL` INTEGER, `SHORT_NAME` TEXT, `SMC_RATING` TEXT, `IS_BASIC` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "BASIC_RATING",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "is_bilateral",
+            "columnName": "BILATERAL",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "short_name",
+            "columnName": "SHORT_NAME",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smc_rating",
+            "columnName": "SMC_RATING",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "is_basic",
+            "columnName": "IS_BASIC",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `HAS_SMC` INTEGER NOT NULL, `SMC_RATING` TEXT, `BASIC_RATING` REAL, `HAS_SPOUSE` INTEGER NOT NULL, `NUM_PARENTS` INTEGER, `NUM_CHILDREN` INTEGER, `NUM_CHILD_DEFECT` INTEGER, `NUM_CHILD_EDUCATION` INTEGER, `REQUIRES_AID` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "has_smc",
+            "columnName": "HAS_SMC",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "smc_rating",
+            "columnName": "SMC_RATING",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "basic_rating",
+            "columnName": "BASIC_RATING",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "has_spouse",
+            "columnName": "HAS_SPOUSE",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_parents",
+            "columnName": "NUM_PARENTS",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "num_Child",
+            "columnName": "NUM_CHILDREN",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "num_child_birth_defect",
+            "columnName": "NUM_CHILD_DEFECT",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "num_child_education",
+            "columnName": "NUM_CHILD_EDUCATION",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "has_aid",
+            "columnName": "REQUIRES_AID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "BirthDefectChild",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `SHORT_NAME` TEXT, `COMPENSATION` REAL, `LEVEL` INTEGER, `IS_SPINAFIDA` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "short_name",
+            "columnName": "SHORT_NAME",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "compensation",
+            "columnName": "COMPENSATION",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "LEVEL",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "is_spinafida",
+            "columnName": "IS_SPINAFIDA",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '21c6a48e3f770944d7763150ec393f67')"
+    ]
+  }
+}

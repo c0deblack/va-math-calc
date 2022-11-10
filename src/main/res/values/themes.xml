@@ -31,6 +31,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/oxygen</item>
     </style>
 
     <!--
@@ -43,6 +44,7 @@
         <item name="colorPrimary">@color/blue_80</item>
         <item name="colorPrimaryDark">@color/blue_100</item>
         <item name="colorAccent">@color/grey_80</item>
+        <item name="android:fontFamily">@font/oxygen</item>
         <!-- Customize your theme here. -->
         <item name="android:dropDownListViewStyle">@style/VAMathCalculator.Form.Spinner.Dropdown.Divider</item>
     </style>
