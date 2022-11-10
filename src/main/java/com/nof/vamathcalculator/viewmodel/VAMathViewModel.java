@@ -82,5 +82,12 @@ public class VAMathViewModel extends AndroidViewModel {
         data.deleteChildWithBirthDefect(child_with_defect);
     }
 
+    public BirthDefectChild get_defect_from_id(int id) {
+        return data.getDefectFromID(id);
+    }
+
+    public void update_child_with_birth_defect(BirthDefectChild child) {
+        data.updateChildWithBirthDefect(child);
+    }
 
 }

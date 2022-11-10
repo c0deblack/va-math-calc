@@ -81,7 +81,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                                 if(pos >= 0) {
                                     data.delete_disability(sorted_list.get(pos));
                                 } else {
-                                    Log.e("DisabilitySummary", "Delete_Button: Cannot delete disability at position " + pos);
+                                    Log.v("DisabilitySummary", "Delete_Button: Cannot delete disability at position " + pos);
                                 }
                             }
                         });
@@ -94,7 +94,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                                     int id = sorted_list.get(pos)._id;
                                     showDialog(VAMathDialogAction.EDIT, id);
                                 } else {
-                                    Log.e("DisabilitySummary", "Delete_Button: Cannot edit disability at position " + pos);
+                                    Log.v("DisabilitySummary", "Delete_Button: Cannot edit disability at position " + pos);
                                 }
                             }
                         });
@@ -235,10 +235,6 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                 //RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.disability_summary_recycler_view, container, false);
                 rv = binding.fragmentHomeDisabilitySummaryRecyclerView;
 
-                //binding.fab.setOnClickListener(view -> Snackbar.make(view, "Used to add new disabilities", Snackbar.LENGTH_LONG)
-                //       .setAction("Action", null).show());
-
-                //CustomAdapter adapter = new CustomAdapter(ratings);
                 adapter = new CustomAdapter(sorted_list);
                 rv.setAdapter(adapter);
 
@@ -257,10 +253,8 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                     }
                 });
 
-                //sorted_list.addAll(ratings);
                 LinearLayoutManager lm = new LinearLayoutManager(getContext());
                 rv.setLayoutManager(lm);
-                //return rv;
             }
         }).start();
 

@@ -5,11 +5,9 @@
 package com.nof.vamathcalculator;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -22,15 +20,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nof.vamathcalculator.databinding.FragmentHomeDependencySummaryFragmentContentScrollFormBinding;
 import com.nof.vamathcalculator.db.BirthDefectChild;
 import com.nof.vamathcalculator.db.User;
-import com.nof.vamathcalculator.model.VABirthDefectSpinaFida;
 import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
@@ -42,8 +38,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
     private VAMathViewModel data;
     private static FragmentManager fragment_manager;
     private ArrayAdapter<BirthDefectChild> birth_defect_adapter;
-    List<BirthDefectChild> birth_defect_child_list;
-
+    private View rootView;
 
     public FragmentHome_DependencySummaryFragment_ScrollForm() {
         // Required empty public constructor
@@ -54,55 +49,6 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
         super.onCreate(savedInstanceState);
         data = new ViewModelProvider(requireActivity()).get(VAMathViewModel.class);
         this.fragment_manager = getChildFragmentManager();
-
-        birth_defect_adapter = new ArrayAdapter<BirthDefectChild>(
-                requireContext(), R.layout.fragment_home_dependency_summary_birth_defect){
-            TextView name;
-            TextView level;
-            TextView type;
-            TextView edit;
-            TextView delete;
-
-            @SuppressLint("ViewHolder")
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                LayoutInflater inflater = requireActivity().getLayoutInflater();
-                convertView = inflater.inflate(
-                        R.layout.fragment_home_dependency_summary_birth_defect,
-                        null, true);
-
-                name = convertView.findViewById(R.id.birth_defect_name);
-                level = convertView.findViewById(R.id.birth_defect_level);
-                type = convertView.findViewById(R.id.birth_defect_type);
-                edit = convertView.findViewById(R.id.birth_defect_edit);
-                delete = convertView.findViewById(R.id.birth_defect_delete);
-
-                edit.setOnClickListener(new View.OnClickListener() {
-                    private int pos = position;
-                    @Override
-                    public void onClick(View v) {
-                        // get birth defect at position
-                        birth_defect_child_list = data.get_all_children_with_birth_defects().getValue();
-
-                        // call show dialog passing in the EDIT action and the ID
-                        showDialog(VAMathDialogAction.EDIT, birth_defect_child_list.get(pos)._id);
-                    }
-                });
-                delete.setOnClickListener(new View.OnClickListener() {
-                    private int pos = position;
-                    @Override
-                    public void onClick(View v) {
-                        // remove element at position from the database
-                        // allow the observable to update the UI
-                        birth_defect_child_list = data.get_all_children_with_birth_defects().getValue();
-                        data.delete_birth_defect(birth_defect_child_list.get(pos));
-                    }
-                });
-                //return super.getView(position, convertView, parent);
-                return convertView;
-            }
-        };
     }
 
     @Override
@@ -121,13 +67,16 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
         super.onViewCreated(view, savedInstanceState);
 
         binding.getRoot().setVisibility(View.INVISIBLE);
+        rootView = getView();
+        ViewGroup viewGroup = (ViewGroup) rootView;
+        ViewGroup birth_defect_container = rootView.findViewById(R.id.birth_defect_list_view_container);
 
         Spinner daily_aid_spinner = binding.fragmentDependencySummaryDailyaidSpinner;
         Spinner parent_spinner = binding.fragmentDependencySummaryParentsSpinner;
         Spinner education_spinner = binding.fragmentDependencySummaryEducationSpinner;
         Spinner child_spinner = binding.fragmentDependencySummaryChildSpinner;
         Spinner married_spinner = binding.fragmentDependencySummaryMarriedSpinner;
-        ListView birth_defects_list = binding.birthDefectListViewContainer;
+        //ListView birth_defects_list = binding.birthDefectListViewContainer;
 
         VAUtils.LinkTextInViewFromResource(
                 requireActivity(),
@@ -215,7 +164,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                 dailyaid_spinner_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
 
                 // attach adapter that fills the birth defect list
-                birth_defects_list.setAdapter(birth_defect_adapter);
+                //birth_defects_list.setAdapter(birth_defect_adapter);
 
                 requireActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -246,13 +195,68 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                             }
                         });
 
-
                         data.get_all_children_with_birth_defects().observe(requireActivity(), new Observer<List<BirthDefectChild>>() {
                             @Override
                             public void onChanged(List<BirthDefectChild> birthDefectChildren) {
-                                birth_defect_adapter.clear();
-                                birth_defect_adapter.addAll(birthDefectChildren);
-                                birth_defect_adapter.notifyDataSetChanged();
+
+                                birth_defect_container.removeAllViews();
+                                //Log.e("BirthDefectObserver","Removed Views");
+
+                                int index = 0;
+                                for(BirthDefectChild child : birthDefectChildren) {
+                                    View birth_defect_list_item = View.inflate(
+                                            viewGroup.getContext(),
+                                            R.layout.fragment_home_dependency_summary_birth_defect,
+                                            null);
+
+                                    TextView defect_name = birth_defect_list_item.findViewById(R.id.birth_defect_name);
+                                    defect_name.setText(child.short_name);
+
+                                    TextView level = birth_defect_list_item.findViewById(R.id.birth_defect_level);
+                                    String strlevel = "";
+                                    switch (child.level){
+                                        case 1:
+                                            strlevel = "I";
+                                            break;
+                                        case 2:
+                                            strlevel = "II";
+                                            break;
+                                        case 3:
+                                            strlevel = "III";
+                                            break;
+                                        case 4:
+                                            strlevel = "IV";
+                                    }
+                                    level.setText("Level " + strlevel);
+
+                                    TextView type = birth_defect_list_item.findViewById(R.id.birth_defect_type);
+                                    if(child.is_spinafida) {
+                                        type.setText("Spina Bifida");
+                                    } else {
+                                        type.setText("Other");
+                                    }
+
+                                    View edit = birth_defect_list_item.findViewById(R.id.birth_defect_edit);
+                                    edit.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            // call show dialog passing in the EDIT action and the ID
+                                            showDialog(VAMathDialogAction.EDIT, child._id);
+                                        }
+                                    });
+                                    View delete = birth_defect_list_item.findViewById(R.id.birth_defect_delete);
+                                    delete.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            // remove element at position from the database
+                                            // allow the observable to update the UI
+                                            data.delete_birth_defect(child);
+                                        }
+                                    });
+                                    birth_defect_container.addView(birth_defect_list_item);
+                                    index++;
+                                }
+
                             }
                         });
                     }
@@ -270,15 +274,6 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                         showDialog(VAMathDialogAction.CREATE, null);
                     }
                 });
-
-                /*
-                BirthDefectChild bd_child = new BirthDefectChild();
-                bd_child.is_spinafida = false;
-                bd_child.level = 3;
-                bd_child.short_name = "test123";
-                data.insert_birth_defect(bd_child);
-                */
-
             }
         }).start();
 

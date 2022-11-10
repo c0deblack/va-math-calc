@@ -18,8 +18,11 @@ public interface BirthDefectChildDAO {
     @Query("Select * FROM birthdefectchild")
     public LiveData<List<BirthDefectChild>> getAll();
 
+    @Query("Select * FROM birthdefectchild WHERE _id = :id")
+    public BirthDefectChild getBirthDefectFromID(int id);
+
     @Query("Select * FROM birthdefectchild WHERE birthdefectchild.SHORT_NAME = :short_name LIMIT 1")
-    public LiveData<BirthDefectChild> getDisabilityFromShortName(String short_name);
+    public LiveData<BirthDefectChild> getDefectFromShortName(String short_name);
 
     @Query("DELETE FROM birthdefectchild")
     public void deleteAll();

@@ -25,7 +25,7 @@
             android:text="ADD A DISABILITY" />
 
         <EditText
-            android:id="@+id/disability_dialogue_short_desc"
+            android:id="@+id/disability_dialog_short_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"

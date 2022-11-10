@@ -239,9 +239,13 @@ public class AppRepository {
         birth_defect_table.insertAll(children);
     }
     public void updateChildWithBirthDefect(BirthDefectChild... children) {
-        birth_defect_table.updateBirthDefect();
+        birth_defect_table.updateBirthDefect(children);
     }
     public void deleteChildWithBirthDefect(BirthDefectChild child) {
         birth_defect_table.delete(child);
+    }
+
+    public BirthDefectChild getDefectFromID(int id){
+        return birth_defect_table.getBirthDefectFromID(id);
     }
 }

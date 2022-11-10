@@ -18,6 +18,16 @@
                 android:layout_height="match_parent"
                 android:text="Add Child With Birth Defect"
                 style="@style/VAMathCalculator.Form.Header"/>
+            <EditText
+                android:id="@+id/birth_defect_dialog_short_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter A Description Here"
+                android:maxLines="1"
+                android:inputType="text"
+                android:maxLength="100"
+                android:gravity="center_horizontal"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

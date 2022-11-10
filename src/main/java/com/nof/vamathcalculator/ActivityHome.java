@@ -73,14 +73,6 @@ public class ActivityHome extends AppCompatActivity {
 
         // Connect to the data
         data = new ViewModelProvider(this).get(VAMathViewModel.class);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.e("ViewModelTest", data.get_basic_compensation_from_status(DependStatus.Additional_Child, VAColumns.BasicColumns.RATING_40).toString());
-            }
-        }, 1000);
-
     }
 
     @Override

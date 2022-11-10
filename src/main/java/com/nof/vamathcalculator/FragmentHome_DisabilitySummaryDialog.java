@@ -180,7 +180,7 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
                 });
         this.dialog = builder.create();
         dialog_title = dialog.findViewById(R.id.disability_dialogue_title);
-        short_desc = dialog.findViewById(R.id.disability_dialogue_short_desc);
+        short_desc = dialog.findViewById(R.id.disability_dialog_short_desc);
         disability_type = dialog.findViewById(R.id.disability_dialogue_rating_type_spinner);
         disability_rating = dialog.findViewById(R.id.disability_dialogue_rating_spinner);
         disability_bilateral = dialog.findViewById(R.id.disability_dialogue_bilateral_spinner);
@@ -194,7 +194,7 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
             @Override
             public void run() {
                 dialog_title = dialog.findViewById(R.id.disability_dialogue_title);
-                short_desc = dialog.findViewById(R.id.disability_dialogue_short_desc);
+                short_desc = dialog.findViewById(R.id.disability_dialog_short_desc);
                 disability_type = dialog.findViewById(R.id.disability_dialogue_rating_type_spinner);
                 disability_rating = dialog.findViewById(R.id.disability_dialogue_rating_spinner);
                 disability_bilateral = dialog.findViewById(R.id.disability_dialogue_bilateral_spinner);
