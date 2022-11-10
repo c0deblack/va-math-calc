@@ -1,3 +1,7 @@
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 package com.nof.vamathcalculator;
 
 import android.os.Bundle;

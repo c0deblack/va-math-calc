@@ -1,3 +1,7 @@
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 package com.nof.vamathcalculator;
 
 import android.os.Bundle;
@@ -5,9 +9,12 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -16,11 +23,15 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.nof.vamathcalculator.databinding.ActivityHomeBinding;
+import com.nof.vamathcalculator.db.DependStatus;
+import com.nof.vamathcalculator.db.VAColumns;
+import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
 public class ActivityHome extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityHomeBinding binding;
+    private VAMathViewModel data;
 
 
     @Override
@@ -59,6 +70,9 @@ public class ActivityHome extends AppCompatActivity {
 
         BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
         NavigationUI.setupWithNavController(bottom_nav, navController);
+
+        // Connect to the data
+        data = new ViewModelProvider(this).get(VAMathViewModel.class);
     }
 
     @Override

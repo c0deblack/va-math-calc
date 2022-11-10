@@ -1,8 +1,10 @@
 package com.nof.vamathcalculator;
 
 import android.app.Activity;
+import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
@@ -10,11 +12,42 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.core.app.NotificationCompat;
+import com.nof.vamathcalculator.db.Disability;
 
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class VAUtils {
+    public static Double GetCombinedRating(List<Disability> disabilities){
+        return 0.0;
+    }
+    public static List<Disability> GetBilateralDisabilities(){
+        return new ArrayList<>();
+    }
+    public static List<Disability> GetNonBilateralDisabilities(){
+        return new ArrayList<>();
+    }
+    public static List<Disability> GetDescendingDisabilityList(List<Disability> disabilities){
+        return new ArrayList<>();
+    }
+
+
+    public abstract static class TextChangedListener<T> implements TextWatcher {
+        private T target;
+        public TextChangedListener(T target) {
+            this.target = target;
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        @Override
+        public void afterTextChanged(Editable s) {
+            this.onTextChanged(target, s);
+        }
+        public abstract void onTextChanged(T target, Editable s);
+    }
+
     public static void LinkTextInViewFromStrings(
             TextView view,
             String text,
@@ -58,7 +91,7 @@ public final class VAUtils {
             SpannableString ssString = new SpannableString(fullText);
             int startLoc = fullText.indexOf(wordTohyperLink);
             int endLoc = fullText.indexOf(wordTohyperLink) + wordTohyperLink.length();
-            Log.e("setHyperLinkInTextView", Integer.toString(startLoc) + " " + Integer.toString(endLoc) + " " + fullText);
+            //Log.e("setHyperLinkInTextView", Integer.toString(startLoc) + " " + Integer.toString(endLoc) + " " + fullText);
             ssString.setSpan(new URLSpan(fullTextUrl),startLoc,endLoc, 0);
             textView.setText(ssString);
             textView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -70,10 +103,8 @@ public final class VAUtils {
                 public void onClick(View widget) {
                     // We display a Toast. You could do anything you want here.
                     Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
-
                 }
             };
-
             ssString.setSpan(clickableSpan, startLoc, endLoc, 0);
             */
 
