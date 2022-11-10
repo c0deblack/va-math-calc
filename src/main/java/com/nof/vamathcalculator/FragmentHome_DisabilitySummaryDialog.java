@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -189,139 +190,157 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
         smc_rating_block = dialog.findViewById(R.id.disability_dialogue_smc_block);
         save_button = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
 
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                dialog_title = dialog.findViewById(R.id.disability_dialogue_title);
-                short_desc = dialog.findViewById(R.id.disability_dialog_short_desc);
-                disability_type = dialog.findViewById(R.id.disability_dialogue_rating_type_spinner);
-                disability_rating = dialog.findViewById(R.id.disability_dialogue_rating_spinner);
-                disability_bilateral = dialog.findViewById(R.id.disability_dialogue_bilateral_spinner);
-                disability_rating_smc = dialog.findViewById(R.id.disability_dialogue_smc_rating_spinner);
-                basic_rating_block = dialog.findViewById(R.id.disability_dialogue_basic_block);
-                smc_rating_block = dialog.findViewById(R.id.disability_dialogue_smc_block);
-                save_button = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                ArrayAdapter<CharSequence> disability_type_adapter = ArrayAdapter.createFromResource(
-                        getContext(),
-                        R.array.disability_type,
-                        R.layout.fragment_home_spinner_depenency_list);
-                disability_type_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                disability_type.setAdapter(disability_type_adapter);
-
-                ArrayAdapter<CharSequence> disability_rating_adapter = ArrayAdapter.createFromResource(
-                        getContext(),
-                        R.array.disability_ratings,
-                        R.layout.fragment_home_spinner_depenency_list);
-                disability_rating_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                disability_rating.setAdapter(disability_rating_adapter);
-
-                ArrayAdapter<CharSequence> disability_bilateral_adapter = ArrayAdapter.createFromResource(
-                        getContext(),
-                        R.array.spinner_yes_no,
-                        R.layout.fragment_home_spinner_depenency_list);
-                disability_bilateral_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                disability_bilateral.setAdapter(disability_bilateral_adapter);
-
-                ArrayAdapter<CharSequence> disability_rating_smc_adapter = ArrayAdapter.createFromResource(
-                        getContext(),
-                        R.array.smc_ratings,
-                        R.layout.fragment_home_spinner_depenency_list);
-                disability_rating_smc_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
-                disability_rating_smc.setAdapter(disability_rating_smc_adapter);
-
-                disability_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        Handler handler = new Handler();
-                        handler.post(new Runnable() {
+                    public void run() {
+                        dialog_title = dialog.findViewById(R.id.disability_dialogue_title);
+                        short_desc = dialog.findViewById(R.id.disability_dialog_short_desc);
+                        disability_type = dialog.findViewById(R.id.disability_dialogue_rating_type_spinner);
+                        disability_rating = dialog.findViewById(R.id.disability_dialogue_rating_spinner);
+                        disability_bilateral = dialog.findViewById(R.id.disability_dialogue_bilateral_spinner);
+                        disability_rating_smc = dialog.findViewById(R.id.disability_dialogue_smc_rating_spinner);
+                        basic_rating_block = dialog.findViewById(R.id.disability_dialogue_basic_block);
+                        smc_rating_block = dialog.findViewById(R.id.disability_dialogue_smc_block);
+                        save_button = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                        ArrayAdapter<CharSequence> disability_type_adapter = ArrayAdapter.createFromResource(
+                                getContext(),
+                                R.array.disability_type,
+                                R.layout.fragment_home_spinner_depenency_list);
+                        disability_type_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
+
+                        ArrayAdapter<CharSequence> disability_rating_adapter = ArrayAdapter.createFromResource(
+                                getContext(),
+                                R.array.disability_ratings,
+                                R.layout.fragment_home_spinner_depenency_list);
+                        disability_rating_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
+
+
+                        ArrayAdapter<CharSequence> disability_bilateral_adapter = ArrayAdapter.createFromResource(
+                                getContext(),
+                                R.array.spinner_yes_no,
+                                R.layout.fragment_home_spinner_depenency_list);
+                        disability_bilateral_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
+
+                        ArrayAdapter<CharSequence> disability_rating_smc_adapter = ArrayAdapter.createFromResource(
+                                getContext(),
+                                R.array.smc_ratings,
+                                R.layout.fragment_home_spinner_depenency_list);
+                        disability_rating_smc_adapter.setDropDownViewResource(R.layout.fragment_home_spinner_dropdown_dependency_list);
+
+                        requireActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                switch(position) {
-                                    case 0:
-                                        smc_rating_block.setVisibility(View.GONE);
-                                        basic_rating_block.setVisibility(View.VISIBLE);
-                                        break;
-                                    case 1:
-                                        basic_rating_block.setVisibility(View.GONE);
-                                        smc_rating_block.setVisibility(View.VISIBLE);
+                                disability_rating_smc.setAdapter(disability_rating_smc_adapter);
+                                disability_bilateral.setAdapter(disability_bilateral_adapter);
+                                disability_rating.setAdapter(disability_rating_adapter);
+                                disability_type.setAdapter(disability_type_adapter);
+                            }
+                        });
+
+                        disability_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                Handler handler = new Handler();
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        switch(position) {
+                                            case 0:
+                                                smc_rating_block.setVisibility(View.GONE);
+                                                basic_rating_block.setVisibility(View.VISIBLE);
+                                                break;
+                                            case 1:
+                                                basic_rating_block.setVisibility(View.GONE);
+                                                smc_rating_block.setVisibility(View.VISIBLE);
+                                        }
+                                    }
+                                });
+                            }
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(mACTION == VAMathDialogAction.EDIT){
+                                    save_button.setEnabled(true);
+                                    Disability disability = data.get_disability_from_id(mID);
+                                    dialog_title.setText("Edit Disability");
+                                    short_desc.setText(disability.short_name);
+                                    disability_type.setSelection(disability.is_basic ? 0 : 1);
+                                    if(!disability.is_basic){
+                                        disability_rating_smc.setSelection(new Object(){
+                                            public int toInt(){
+                                                int ret_position = 0;
+                                                switch(disability.smc_rating){
+                                                    case VAColumns.SMCColumns.SMC_L:
+                                                        ret_position = 0;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_L_1_2:
+                                                        ret_position = 1;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_M:
+                                                        ret_position = 2;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_M_1_2:
+                                                        ret_position = 3;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_N:
+                                                        ret_position = 4;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_N_1_2:
+                                                        ret_position = 5;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_O_P:
+                                                        ret_position = 6;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_R_1:
+                                                        ret_position = 7;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_R_2:
+                                                        ret_position = 8;
+                                                        break;
+                                                    case VAColumns.SMCColumns.SMC_S:
+                                                        ret_position = 9;
+                                                }
+                                                return ret_position;
+                                            }
+                                        }.toInt());
+                                    } else {
+                                        disability_bilateral.setSelection(disability.is_bilateral ? 1 : 0);
+                                        disability_rating.setSelection((int)(disability.rating / 10) - 1);
+                                    }
+                                } else {
+                                    save_button.setEnabled(false);
                                 }
                             }
                         });
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
 
-                    }
-                });
-                if(mACTION == VAMathDialogAction.EDIT){
-                    save_button.setEnabled(true);
-                    Disability disability = data.get_disability_from_id(mID);
-                    dialog_title.setText("Edit Disability");
-                    short_desc.setText(disability.short_name);
-                    disability_type.setSelection(disability.is_basic ? 0 : 1);
-                    if(!disability.is_basic){
-                        disability_rating_smc.setSelection(new Object(){
-                            public int toInt(){
-                                int ret_position = 0;
-                                switch(disability.smc_rating){
-                                    case VAColumns.SMCColumns.SMC_L:
-                                        ret_position = 0;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_L_1_2:
-                                        ret_position = 1;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_M:
-                                        ret_position = 2;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_M_1_2:
-                                        ret_position = 3;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_N:
-                                        ret_position = 4;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_N_1_2:
-                                        ret_position = 5;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_O_P:
-                                        ret_position = 6;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_R_1:
-                                        ret_position = 7;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_R_2:
-                                        ret_position = 8;
-                                        break;
-                                    case VAColumns.SMCColumns.SMC_S:
-                                        ret_position = 9;
-                                }
-                                return ret_position;
-                            }
-                        }.toInt());
-                    } else {
-                        disability_bilateral.setSelection(disability.is_bilateral ? 1 : 0);
-                        disability_rating.setSelection((int)(disability.rating / 10) - 1);
-                    }
-                } else {
-                    save_button.setEnabled(false);
-                }
-
-                short_desc.addTextChangedListener(new VAUtils.TextChangedListener<EditText>(short_desc) {
-                    @Override
-                    public void onTextChanged(EditText target, Editable s) {
-                        Handler handler = new Handler();
-                        handler.post(new Runnable() {
+                        short_desc.addTextChangedListener(new VAUtils.TextChangedListener<EditText>(short_desc) {
                             @Override
-                            public void run() {
-                                if(s.length() >= 3 && !save_button.isEnabled()){
-                                        save_button.setEnabled(true);
-                                }
+                            public void onTextChanged(EditText target, Editable s) {
+                                Handler handler = new Handler();
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(s.length() >= 3 && !save_button.isEnabled()){
+                                            save_button.setEnabled(true);
+                                        }
+                                    }
+                                });
                             }
                         });
+
+                        dialog.findViewById(R.id.disability_dialogue_container).setVisibility(View.VISIBLE);
                     }
-                });
-                dialog.findViewById(R.id.disability_dialogue_container).setVisibility(View.VISIBLE);
+                }).start();
             }
         });
         return this.dialog;

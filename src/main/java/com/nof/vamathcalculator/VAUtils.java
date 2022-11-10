@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nof.vamathcalculator.db.Disability;
+import com.nof.vamathcalculator.db.VAColumns;
+import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,42 @@ public final class VAUtils {
             this.onTextChanged(target, s);
         }
         public abstract void onTextChanged(T target, Editable s);
+    }
+
+    public static String get_smc_rating(Disability disability){
+        String string_rating = new String();
+        switch(disability.smc_rating){
+            case VAColumns.SMCColumns.SMC_L:
+                string_rating = "SMC-L";
+                break;
+            case VAColumns.SMCColumns.SMC_L_1_2:
+                string_rating = "SMC-L 1/2";
+                break;
+            case VAColumns.SMCColumns.SMC_M:
+                string_rating = "SMC-M";
+                break;
+            case VAColumns.SMCColumns.SMC_M_1_2:
+                string_rating = "SMC-M 1/2";
+                break;
+            case VAColumns.SMCColumns.SMC_N:
+                string_rating = "SMC-N";
+                break;
+            case VAColumns.SMCColumns.SMC_N_1_2:
+                string_rating = "SMC-N 1/2";
+                break;
+            case VAColumns.SMCColumns.SMC_O_P:
+                string_rating = "SMC-O/P";
+                break;
+            case VAColumns.SMCColumns.SMC_R_1:
+                string_rating = "SMC-R.1";
+                break;
+            case VAColumns.SMCColumns.SMC_R_2:
+                string_rating = "SMC-R.2/T";
+                break;
+            case VAColumns.SMCColumns.SMC_S:
+                string_rating = "SMC-S";
+        }
+        return string_rating;
     }
 
     public static void LinkTextInViewFromStrings(
