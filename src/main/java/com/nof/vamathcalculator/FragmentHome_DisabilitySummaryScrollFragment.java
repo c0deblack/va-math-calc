@@ -27,6 +27,9 @@ import androidx.recyclerview.widget.SortedList;
 
 import com.nof.vamathcalculator.databinding.FragmentHomeDisabilitySummaryScrollContainerBinding;
 import com.nof.vamathcalculator.db.Disability;
+
+import com.nof.vamathcalculator.db.VAColumns;
+
 import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
@@ -151,7 +154,8 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                         rating = "Rating: " + data.rating + "%";
                         bilat = (data.is_bilateral) ? "Yes" : "No";
                     } else {
-                        rating = "SMC Rating: " + data.smc_rating;
+                        rating = "SMC Rating: " + VAUtils.get_smc_rating(data);
+                        bilat = "N/A";
                     }
 
                     String finalBilat = bilat;
