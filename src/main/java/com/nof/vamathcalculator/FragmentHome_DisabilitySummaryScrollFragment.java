@@ -27,7 +27,9 @@ import androidx.recyclerview.widget.SortedList;
 
 import com.nof.vamathcalculator.databinding.FragmentHomeDisabilitySummaryScrollContainerBinding;
 import com.nof.vamathcalculator.db.Disability;
+
 import com.nof.vamathcalculator.db.VAColumns;
+
 import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 

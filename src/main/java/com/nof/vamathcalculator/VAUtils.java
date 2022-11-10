@@ -16,6 +16,7 @@ import com.nof.vamathcalculator.db.Disability;
 import com.nof.vamathcalculator.db.VAColumns;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +86,6 @@ public final class VAUtils {
         }
         return string_rating;
     }
-
     public static void LinkTextInViewFromStrings(
             TextView view,
             String text,

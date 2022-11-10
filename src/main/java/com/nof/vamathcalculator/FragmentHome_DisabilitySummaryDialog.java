@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
 import android.os.Looper;
+
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -189,7 +190,6 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
         basic_rating_block = dialog.findViewById(R.id.disability_dialogue_basic_block);
         smc_rating_block = dialog.findViewById(R.id.disability_dialogue_smc_block);
         save_button = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
