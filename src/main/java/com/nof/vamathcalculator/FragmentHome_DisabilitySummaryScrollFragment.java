@@ -246,7 +246,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                             public void onChanged(List<Disability> disabilities) {
                                 //ratings = disabilities;
                                 sorted_list.replaceAll(disabilities);
-                                Log.e("Disabilities", "onChange: Disability added. "
+                                Log.v("Disabilities", "onChange: Disability added. "
                                         + "Total number is: " + disabilities.size());
                             }
                         });
