@@ -1,3 +1,7 @@
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 package com.nof.vamathcalculator.db;
 
 import android.content.Context;
@@ -12,28 +16,27 @@ import java.util.concurrent.Executors;
  * Singleton class that provides a shared instance to the database
  */
 public class VAMathDB {
-    private static VAMathRoomDB m_db = null;
+    private static VAMathRoomDB INSTANCE = null;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    private VAMathDB() {}
+    public VAMathDB() {}
 
-    public static VAMathDB getDB(Context app_context) {
-        VAMathDB db = new VAMathDB();
-        if (m_db == null) {
-            synchronized (VAMathRoomDB.class) {
-                // m_db = Room.databaseBuilder(
-                m_db = Room.inMemoryDatabaseBuilder(
-                        app_context,
-                        VAMathRoomDB.class
-                        //        VAMathRoomDB.class,
-                        //        "VA-Math-DB"
-                ).build();
-            }
+    public static VAMathRoomDB getDB(Context app_context) {
+        if (INSTANCE == null) {
+            databaseWriteExecutor.execute(() -> {
+                synchronized (VAMathRoomDB.class) {
+                     INSTANCE = Room.databaseBuilder(
+                    //INSTANCE = Room.inMemoryDatabaseBuilder(
+                            app_context,
+                     //     VAMathRoomDB.class
+                            VAMathRoomDB.class,
+                            "VA-Math-DB"
+                    ).build();
+                }
+            });
         }
-        return db;
+        return INSTANCE;
     }
-
-    public VAMathRoomDB db() { return m_db; }
 }
