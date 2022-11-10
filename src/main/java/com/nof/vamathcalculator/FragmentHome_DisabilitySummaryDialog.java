@@ -338,7 +338,12 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
                             }
                         });
 
-                        dialog.findViewById(R.id.disability_dialogue_container).setVisibility(View.VISIBLE);
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialog.findViewById(R.id.disability_dialogue_container).setVisibility(View.VISIBLE);
+                            }
+                        });
                     }
                 }).start();
             }
