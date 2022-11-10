@@ -24,21 +24,19 @@ import android.widget.TextView;
 
 import com.nof.vamathcalculator.db.Disability;
 import com.nof.vamathcalculator.db.VAColumns;
+import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
 import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentHome_DisabilitySummaryDialogue#newInstance} factory method to
+ * Use the {@link FragmentHome_DisabilitySummaryDialog#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
+public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
 
-    public enum ACTION {
-        CREATE,
-        EDIT
-    }
+
     private AlertDialog dialog;
     VAMathViewModel data;
 
@@ -58,10 +56,10 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
     private static final String ID_KEY = "ID";
 
     // TODO: Rename and change types of parameters
-    private ACTION mACTION;
+    private VAMathDialogAction mACTION;
     private int mID;
 
-    public FragmentHome_DisabilitySummaryDialogue() {
+    public FragmentHome_DisabilitySummaryDialog() {
         // Required empty public constructor
     }
 
@@ -73,8 +71,8 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
      * @return A new instance of fragment FragmentHome_DisabilitySummaryDialogue.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentHome_DisabilitySummaryDialogue newInstance(ACTION action, int id) {
-        FragmentHome_DisabilitySummaryDialogue fragment = new FragmentHome_DisabilitySummaryDialogue();
+    public static FragmentHome_DisabilitySummaryDialog newInstance(VAMathDialogAction action, int id) {
+        FragmentHome_DisabilitySummaryDialog fragment = new FragmentHome_DisabilitySummaryDialog();
         Bundle args = new Bundle();
         args.putSerializable(ACTION_KEY, action);
         args.putInt(ID_KEY, id);
@@ -86,7 +84,7 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mACTION = (ACTION)getArguments().getSerializable(ACTION_KEY);
+            mACTION = (VAMathDialogAction)getArguments().getSerializable(ACTION_KEY);
             mID = getArguments().getInt(ID_KEY);
         }
         data = new ViewModelProvider(requireActivity()).get(VAMathViewModel.class);
@@ -111,7 +109,7 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //TODO: implement save
                         Disability disability;
-                        if(mACTION == ACTION.EDIT) {
+                        if(mACTION == VAMathDialogAction.EDIT) {
                             disability = data.get_disability_from_id(mID);
                         } else {
                             disability = new Disability();
@@ -166,7 +164,7 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
                             disability.is_bilateral = disability_bilateral.getSelectedItemPosition() == 1;
                         }
 
-                        if(mACTION == ACTION.EDIT) {
+                        if(mACTION == VAMathDialogAction.EDIT) {
                             data.update_disability(disability);
                         } else {
                             data.insert_disability(disability);
@@ -176,7 +174,7 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Objects.requireNonNull(FragmentHome_DisabilitySummaryDialogue.this.getDialog())
+                        Objects.requireNonNull(FragmentHome_DisabilitySummaryDialog.this.getDialog())
                                 .cancel();
                     }
                 });
@@ -257,7 +255,7 @@ public class FragmentHome_DisabilitySummaryDialogue extends DialogFragment {
 
                     }
                 });
-                if(mACTION == ACTION.EDIT){
+                if(mACTION == VAMathDialogAction.EDIT){
                     save_button.setEnabled(true);
                     Disability disability = data.get_disability_from_id(mID);
                     dialog_title.setText("Edit Disability");

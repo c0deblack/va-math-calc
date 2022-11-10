@@ -19,18 +19,15 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SortedList;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import com.nof.vamathcalculator.databinding.FragmentHomeDisabilitySummaryScrollContainerBinding;
 import com.nof.vamathcalculator.db.Disability;
+import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
 import java.util.ArrayList;
@@ -95,7 +92,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                                 int pos = getAdapterPosition();
                                 if(pos >= 0) {
                                     int id = sorted_list.get(pos)._id;
-                                    showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION.EDIT, id);
+                                    showDialog(VAMathDialogAction.EDIT, id);
                                 } else {
                                     Log.e("DisabilitySummary", "Delete_Button: Cannot edit disability at position " + pos);
                                 }
@@ -277,17 +274,17 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
             int count = 0;
             @Override
             public void onClick(View view) {
-                showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION.CREATE,
+                showDialog(VAMathDialogAction.CREATE,
                         null);
             }
         });
     }
 
-    private static void showDialog(FragmentHome_DisabilitySummaryDialogue.ACTION action, Integer row_id) {
+    private static void showDialog(VAMathDialogAction action, Integer row_id) {
 
         row_id = (row_id == null) ? -1 : row_id;
         // Create and show the dialog.
-        DialogFragment newFragment = FragmentHome_DisabilitySummaryDialogue.newInstance(action, row_id);
+        DialogFragment newFragment = FragmentHome_DisabilitySummaryDialog.newInstance(action, row_id);
         newFragment.show(fragment_manager, "dialog");
     }
 }

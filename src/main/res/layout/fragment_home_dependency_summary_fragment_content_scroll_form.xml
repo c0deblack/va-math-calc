@@ -160,6 +160,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             </LinearLayout>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/birth_defect_list_view_container"
+                />
             <Button
                 android:id="@+id/add_disabled_child"
                 android:layout_width="wrap_content"

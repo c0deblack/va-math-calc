@@ -15,7 +15,7 @@ public class VABirthDefectSpinaFida implements VAMathBirthDefectChild {
     public static final Integer MIN_LEVEL = 1;
     private final List<Double> compensation_list = Arrays.asList(362.00, 1231.00, 2096.00);
 
-    VABirthDefectSpinaFida(Integer level, String short_name) {
+    public VABirthDefectSpinaFida(Integer level, String short_name) {
         if(level >= MIN_LEVEL && level <= MAX_LEVEL) {
             m_disability_level = level;
 

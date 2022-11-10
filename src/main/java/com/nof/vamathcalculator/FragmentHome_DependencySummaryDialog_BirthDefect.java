@@ -9,24 +9,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.nof.vamathcalculator.model.VAMathDialogAction;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentHome_DependencySummaryDialogue_BirthDefect#newInstance} factory method to
+ * Use the {@link FragmentHome_DependencySummaryDialog_BirthDefect#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentHome_DependencySummaryDialogue_BirthDefect extends DialogFragment {
+public class FragmentHome_DependencySummaryDialog_BirthDefect extends DialogFragment {
     private AlertDialog dialog;
     private View birth_defect_spina_bifida_form;
     private View birth_defect_other_form;
@@ -42,14 +42,14 @@ public class FragmentHome_DependencySummaryDialogue_BirthDefect extends DialogFr
     
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ACTION_KEY = "ACTION";
+    private static final String ID_KEY = "ID";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private VAMathDialogAction mACTION;
+    private int mID;
 
-    public FragmentHome_DependencySummaryDialogue_BirthDefect() {
+    public FragmentHome_DependencySummaryDialog_BirthDefect() {
         // Required empty public constructor
     }
 
@@ -62,11 +62,11 @@ public class FragmentHome_DependencySummaryDialogue_BirthDefect extends DialogFr
      * @return A new instance of fragment FragmentHome_DependencySummaryDialogue_BirthDefect.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentHome_DependencySummaryDialogue_BirthDefect newInstance(String param1, String param2) {
-        FragmentHome_DependencySummaryDialogue_BirthDefect fragment = new FragmentHome_DependencySummaryDialogue_BirthDefect();
+    public static FragmentHome_DependencySummaryDialog_BirthDefect newInstance(VAMathDialogAction param1, int param2) {
+        FragmentHome_DependencySummaryDialog_BirthDefect fragment = new FragmentHome_DependencySummaryDialog_BirthDefect();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable(ACTION_KEY, param1);
+        args.putInt(ID_KEY, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -75,8 +75,8 @@ public class FragmentHome_DependencySummaryDialogue_BirthDefect extends DialogFr
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mACTION = (VAMathDialogAction)getArguments().getSerializable(ACTION_KEY);
+            mID = getArguments().getInt(ID_KEY);
         }
     }
     @Override
@@ -97,7 +97,7 @@ public class FragmentHome_DependencySummaryDialogue_BirthDefect extends DialogFr
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        FragmentHome_DependencySummaryDialogue_BirthDefect.this.getDialog().cancel();
+                        FragmentHome_DependencySummaryDialog_BirthDefect.this.getDialog().cancel();
                     }
                 });
 
