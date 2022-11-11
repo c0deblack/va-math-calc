@@ -15,152 +15,90 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.Resources"
     >
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".FragmentResources"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="2dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/message"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="75dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/fileClaim_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
         <TextView
             android:id="@+id/message2"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="13dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/fileClaim_howTo_text_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message" />
+            />
 
         <TextView
             android:id="@+id/message3"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="13dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/fileClaim_fileOnline_text_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message2" />
+            />
 
         <TextView
             android:id="@+id/message4"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="13dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/fileClaim_claimStatus_text_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message3" />
+            />
 
         <TextView
             android:id="@+id/message5"
-            android:layout_width="367dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="13dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/fileClaim_helpPhone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message4" />
+            />
 
         <TextView
             android:id="@+id/message6"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="337dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_title"
-            app:layout_constraintBottom_toTopOf="@+id/message7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
         <TextView
             android:id="@+id/message7"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_VA_text_description"
-            app:layout_constraintBottom_toTopOf="@+id/message8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message6" />
+            />
 
         <TextView
             android:id="@+id/message8"
-            android:layout_width="367dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_vaPhone"
-            app:layout_constraintBottom_toTopOf="@+id/message9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message7" />
+            />
 
         <TextView
             android:id="@+id/message9"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_stateVA_text_description"
-            app:layout_constraintBottom_toTopOf="@+id/message10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message8" />
+            />
 
         <TextView
             android:id="@+id/message10"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_DAV_text_description"
-            app:layout_constraintBottom_toTopOf="@+id/message11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message9" />
+            />
 
         <TextView
             android:id="@+id/message11"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_lifeline_text_description"
-            app:layout_constraintBottom_toTopOf="@+id/message12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message10" />
+            />
 
         <TextView
             android:id="@+id/message12"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_suicideLifeline_text_description"
-            app:layout_constraintBottom_toTopOf="@+id/message13"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message11" />
+            />
 
         <TextView
             android:id="@+id/message13"
-            android:layout_width="367dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginBottom="14dp"
+            style="@style/VAMathCalculator.Resources.Body"
             android:text="@string/additionalResources_suicideHotline"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message12" />
+            />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
