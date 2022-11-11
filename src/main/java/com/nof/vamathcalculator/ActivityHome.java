@@ -7,15 +7,20 @@ package com.nof.vamathcalculator;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -61,7 +66,6 @@ public class ActivityHome extends AppCompatActivity {
                 R.id.fragment_privacy,
                 R.id.fragment_terms,
                 R.id.fragment_references,
-                R.id.fragment_settings,
                 R.id.fragment_clear
         )
                 .setDrawerLayout(binding.drawerLayout)
@@ -70,6 +74,27 @@ public class ActivityHome extends AppCompatActivity {
 
         BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
         NavigationUI.setupWithNavController(bottom_nav, navController);
+
+        /*
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
+                View bottom_nav_item_view = bottom_nav.getChildAt(0);
+                Menu bottom_nav_menu = bottom_nav.getMenu();
+                switch(navDestination.getId()){
+                    case R.id.fragment_home:
+                    case R.id.fragment_references:
+                        break;
+                    default:
+                        MenuItem m1 = bottom_nav_menu.findItem(R.id.fragment_home);
+                        MenuItem m2 = bottom_nav_menu.findItem(R.id.fragment_references);
+                        m2.setChecked(false);
+                        m1.setChecked(false);
+                }
+            }
+        });
+        */
 
         // Connect to the data
         data = new ViewModelProvider(this).get(VAMathViewModel.class);
