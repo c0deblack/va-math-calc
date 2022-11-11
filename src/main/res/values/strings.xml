@@ -190,9 +190,10 @@
 
     <!-- FRAGMENT ABOUT -->
     <string name="about_fragment_label">About</string>
-    <string name="previous">Previous</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
+    <string name="about_textview_second">About</string>
+    <string name="about_textView15">This application was created with the sole intention to help the veterans of the United States calculate their disability income with ease. With this app you can input your dependents as well as your marrital status, along with other helpful information, then the app will take care of the rest!</string>
+    <string name="about_textView16">The creation of this app could not have been possible without the hard work and knowledge of some of the best students attending Valecia College. Sarah Gillis, Gabriel Corbin, Publio Samayoa, Chance Giordano, Heloiza Naemy Sadoyama Camargo, and Jensy Fernandez worked very diligently, day and night, to make sure that this application was created with precision and excellence to make sure that it works great so you can work less.</string>
+    <string name="about_textView17">We hope you enjoy the App!</string>
 
     <!-- FRAGMENT HELP -->
     <string name="help_fragment_label">Help</string>
@@ -263,6 +264,7 @@
     <string name="additionalResources_suicideLifeline_text_description">Suicide and Crisis Lifeline for Veterans</string>
     <string name="additionalResources_suicideLifeline_text_to_link">Suicide and Crisis Lifeline for Veterans</string>
     <string name="additionalResources_suicideLifeline_text_url">https://988lifeline.org/help-yourself/veterans</string>
+
 
     <!-- FRAGMENT REFERENCES  -->
 
