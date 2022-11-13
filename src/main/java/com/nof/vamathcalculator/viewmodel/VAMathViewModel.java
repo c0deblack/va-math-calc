@@ -90,4 +90,22 @@ public class VAMathViewModel extends AndroidViewModel {
         data.updateChildWithBirthDefect(child);
     }
 
+    public void delete_all_user_records(){
+        //this.delete_all_users();
+        this.clear_user_data();
+        this.delete_all_disabilities();
+        this.delete_all_birth_defect();
+    }
+    public void delete_all_users(){
+        data.deleteAllUsers();
+    }
+    public void clear_user_data(){
+        data.clearUser();
+    }
+    public void delete_all_disabilities(){
+        data.deleteAllDisabilities();
+    }
+    public void delete_all_birth_defect(){
+        data.deleteAllBirthDefects();
+    }
 }
