@@ -185,11 +185,11 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
                             public void onChanged(User user) {
                                 married_spinner.setSelection(!user.has_spouse ? 0 : 1);
 
-                                child_spinner.setSelection(user.num_Child);
+                                child_spinner.setSelection(user.num_Child == null ? 0 : user.num_Child);
 
-                                parent_spinner.setSelection(user.num_parents);
+                                parent_spinner.setSelection(user.num_parents == null ? 0 : user.num_parents);
 
-                                education_spinner.setSelection(user.num_child_education);
+                                education_spinner.setSelection(user.num_child_education == null ? 0 : user.num_child_education);
 
                                 daily_aid_spinner.setSelection(!user.has_aid ? 0 : 1);
                             }
@@ -315,7 +315,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
             User user = data.get_user().getValue();
             int old_selection;
             if( user != null ) {
-                old_selection = user.num_Child;
+                old_selection = user.num_Child == null ? 0 : user.num_Child;
 
                 if(old_selection != i) {
                     user.num_Child = i;
@@ -336,7 +336,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
             User user = data.get_user().getValue();
             int old_selection;
             if( user != null ) {
-                old_selection = user.num_parents;
+                old_selection = user.num_parents == null ? 0 : user.num_parents;
 
                 if(old_selection != i) {
                     user.num_parents = i;
@@ -357,7 +357,7 @@ public class FragmentHome_DependencySummaryFragment_ScrollForm extends Fragment 
             User user = data.get_user().getValue();
             int old_selection;
             if( user != null ) {
-                old_selection = user.num_child_education;
+                old_selection = user.num_child_education == null ? 0 : user.num_child_education;
 
                 if(old_selection != i) {
                     user.num_child_education = i;

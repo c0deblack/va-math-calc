@@ -224,6 +224,8 @@ public class AppRepository {
     public void deleteUser(User user) {
         user_table.delete(user);
     }
+    public void deleteAllUsers(){user_table.deleteAll(); }
+    public void clearUser(){ user_table.setToDefault(); }
 
     public void insertDisability(Disability... disabilities) {
         disability_table.insertAll(disabilities);
@@ -233,6 +235,9 @@ public class AppRepository {
     }
     public void deleteDisability(Disability disability) {
         disability_table.delete(disability);
+    }
+    public void deleteAllDisabilities(){
+        disability_table.deleteAll();
     }
 
     public void insertChildWithBirthDefect(BirthDefectChild... children) {
@@ -244,8 +249,10 @@ public class AppRepository {
     public void deleteChildWithBirthDefect(BirthDefectChild child) {
         birth_defect_table.delete(child);
     }
-
     public BirthDefectChild getDefectFromID(int id){
         return birth_defect_table.getBirthDefectFromID(id);
+    }
+    public void deleteAllBirthDefects(){
+        birth_defect_table.deleteAll();
     }
 }
