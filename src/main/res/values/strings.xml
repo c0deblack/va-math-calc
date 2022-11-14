@@ -15,7 +15,6 @@
         <item>Help</item>
         <item>Privacy and Data</item>
         <item>Additional Resources</item>
-        <item>Settings</item>
         <item>Terms of Use</item>
     </string-array>
 
@@ -188,12 +187,18 @@
     <string name="dependency_summary_child_aid_description_url">https://www.va.gov/pension/aid-attendance-housebound/</string>
 
 
+    <!-- FRAGMENT CLEAR ALL DATA -->
+    <string name="clear_data_warning">WARNING:  Pressing this button will remove all current calculations. This action is final and not reversible.</string>
+    <string name="clear_data_button"><b>Clear All Data</b></string>
+
+
     <!-- FRAGMENT ABOUT -->
     <string name="about_fragment_label">About</string>
     <string name="about_textview_second">About</string>
     <string name="about_textView15">This application was created with the sole intention to help the veterans of the United States calculate their disability income with ease. With this app you can input your dependents as well as your marrital status, along with other helpful information, then the app will take care of the rest!</string>
     <string name="about_textView16">The creation of this app could not have been possible without the hard work and knowledge of some of the best students attending Valecia College. Sarah Gillis, Gabriel Corbin, Publio Samayoa, Chance Giordano, Heloiza Naemy Sadoyama Camargo, and Jensy Fernandez worked very diligently, day and night, to make sure that this application was created with precision and excellence to make sure that it works great so you can work less.</string>
     <string name="about_textView17">We hope you enjoy the App!</string>
+
 
     <!-- FRAGMENT HELP -->
     <string name="help_fragment_label">Help</string>
@@ -207,10 +212,6 @@
     <string name="privacy_fragment_label">Privacy and Data</string>
     <string name="privacy_fragment_collection">WHAT INFORMATION DO WE COLLECT?  Android Space does not collect any data from users through the VA Math Calculator, which means there is no collecting, storing, transferring, sharing, or selling of any user data internally or with third parties, including domestic or internationally. We do not use any tracking methods. We do not utilize any form of logins, including social logins.</string>
     <string name="privacy_fragment_contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE? If you have any questions or comments about this notice, please submit an email to inquries@androidspace.com.</string>
-
-
-    <!-- FRAGMENT SETTINGS -->
-    <string name="settings_fragment_label">Settings</string>
 
 
     <!-- FRAGMENT TERMS  -->
@@ -230,7 +231,6 @@
     <string name="terms_fragment_terms12"><b>12. APPLICABLE LAW.</b>  This license agreement is government by the laws of the State of Florida excluding conflicts of law rules.</string>
     <string name="terms_fragment_terms13"><b>13. MISCELLANEOUS.</b>  If any of the terms of this agreement should be or become invalid, the validity of the remaining provisions shall not be affected. Invalid terms will be replaced by valid ones formulated in a way that will achieve the primary purpose. Collateral agreements, changes, and amendments are only valid if laid down in writing. The preceding clause can only be waived in writing.</string>
     <string name="terms_fragment_terms14"><b>14. CONTACT INFORMATION.</b>  For general inquiries, complaints, questions, or feedback concerning the VA Math Calculator, please submit an email to inquries@androidspace.com.</string>
-
 
 
     <!-- FRAGMENT RESOURCES  -->
@@ -264,9 +264,6 @@
     <string name="additionalResources_suicideLifeline_text_description">Suicide and Crisis Lifeline for Veterans</string>
     <string name="additionalResources_suicideLifeline_text_to_link">Suicide and Crisis Lifeline for Veterans</string>
     <string name="additionalResources_suicideLifeline_text_url">https://988lifeline.org/help-yourself/veterans</string>
-
-
-    <!-- FRAGMENT REFERENCES  -->
 
 
 </resources>
