@@ -1,3 +1,7 @@
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 package com.nof.vamathcalculator.db;
 
 import static com.nof.vamathcalculator.db.VAColumns.DEPEND_STATUS_COL_NAME;
@@ -17,9 +21,11 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(indices = {
+@Entity(
+        indices = {
         @Index(value = DEPEND_STATUS_COL_NAME, unique = true)
-})
+        }
+)
 public class SMC_Rating {
 
     @PrimaryKey(autoGenerate = true)

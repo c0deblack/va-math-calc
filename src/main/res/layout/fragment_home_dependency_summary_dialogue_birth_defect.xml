@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentHome_DependencySummaryDialog_BirthDefect">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Add Child With Birth Defect"
+                style="@style/VAMathCalculator.Form.Header"/>
+            <EditText
+                android:id="@+id/birth_defect_dialog_short_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter A Description Here"
+                android:maxLines="1"
+                android:inputType="text"
+                android:maxLength="100"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/VAMathCalculator.Form.Body"
+                android:text="Please select the type of birth defect."/>
+            <Spinner
+                android:id="@+id/birth_defect_type_spinner"
+                android:layout_width="match_parent"
+                style="@style/VAMathCalculator.Form.Spinner"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/birth_defect_spina_bifida_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/VAMathCalculator.Form.Body"
+                    android:text="Are you a Vietnam or Korean War Veteran?"/>
+                <Spinner
+                    android:id="@+id/birth_defect_spina_bifida_veteran_status"
+                    android:layout_width="match_parent"
+                    style="@style/VAMathCalculator.Form.Spinner"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/birth_defect_spina_bifida_level_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/VAMathCalculator.Form.Body"
+                        android:text="Rate the disability of your child from Level I (least disabling) to Level III (most disabling)."/>
+                    <Spinner
+                        android:id="@+id/birth_defect_spina_bifida_level"
+                        android:layout_width="match_parent"
+                        style="@style/VAMathCalculator.Form.Spinner"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/birth_defect_other_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/VAMathCalculator.Form.Body"
+                    android:text="Are you a women Vietnam Veteran?"/>
+                <Spinner
+                    android:id="@+id/birth_defect_other_gender"
+                    android:layout_width="match_parent"
+                    style="@style/VAMathCalculator.Form.Spinner"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/birth_defect_other_level_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/VAMathCalculator.Form.Body"
+                        android:text="Rate the disability of your child from Level I (least disabling) to Level IV (most disabling)."/>
+                    <Spinner
+                        android:id="@+id/birth_defect_other_level"
+                        android:layout_width="match_parent"
+                        style="@style/VAMathCalculator.Form.Spinner"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

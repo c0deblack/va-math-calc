@@ -11,9 +11,6 @@
         android:id="@+id/fragment_references"
         android:title="External Resources" />
     <item
-        android:id="@+id/fragment_settings"
-        android:title="Settings" />
-    <item
         android:id="@+id/fragment_help"
         android:title="Help" />
     <item
