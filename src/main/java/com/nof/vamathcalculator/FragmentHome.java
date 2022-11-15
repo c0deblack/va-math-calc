@@ -1,3 +1,7 @@
+/**
+ * by c0deblack 2022
+ * https://github.com/c0deblack
+ */
 package com.nof.vamathcalculator;
 
 import android.os.Bundle;
@@ -74,7 +78,7 @@ public class FragmentHome extends Fragment {
 
     }
 
-    /***
+    /**
      * Implementation of PagerAdapter that uses a Fragment to manage each page. This class also
      * handles saving and restoring of fragment's state.
      *

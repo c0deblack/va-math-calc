@@ -12,7 +12,7 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@color/design_default_color_primary</item>
+        <item name="android:background">@color/blue_100</item>
         <item name="android:textSize">25sp</item>
     </style>
 
@@ -29,8 +29,17 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-
-
+    <style name="VAMathCalculator.BodyText" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="VAMathCalculator.BodyHeader" parent="@style/TextAppearance.MaterialComponents.Headline4">
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <!-- SPINNERS -->
     <style name="VAMathCalculator.Form.Spinner" parent="Widget.AppCompat.Spinner">

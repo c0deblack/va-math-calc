@@ -48,13 +48,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_settings"
-        android:name="com.nof.vamathcalculator.FragmentSettings"
-        tools:layout="@layout/fragment_settings"
-        android:label="@string/settings_fragment_label">
-    </fragment>
-
-    <fragment
         android:id="@+id/fragment_terms"
         android:name="com.nof.vamathcalculator.FragmentTerms"
         android:label="@string/terms_fragment_label"

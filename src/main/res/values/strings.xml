@@ -15,7 +15,6 @@
         <item>Help</item>
         <item>Privacy and Data</item>
         <item>Additional Resources</item>
-        <item>Settings</item>
         <item>Terms of Use</item>
     </string-array>
 
@@ -109,6 +108,55 @@
         <item>Yes</item>
     </string-array>
 
+    <string-array name="disability_type">
+        <item>Basic</item>
+        <item>SMC</item>
+    </string-array>
+
+    <string-array name="disability_ratings">
+        <item>10%</item>
+        <item>20%</item>
+        <item>30%</item>
+        <item>40%</item>
+        <item>50%</item>
+        <item>60%</item>
+        <item>70%</item>
+        <item>80%</item>
+        <item>90%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="smc_ratings">
+        <item>SMC-L</item>
+        <item>SMC-L 1/2</item>
+        <item>SMC-M</item>
+        <item>SMC-M 1/2</item>
+        <item>SMC-N</item>
+        <item>SMC-N 1/2</item>
+        <item>SMC-O/P</item>
+        <item>SMC-R.1</item>
+        <item>SMC-R.2/T</item>
+        <item>SMC-S</item>
+    </string-array>
+
+    <string-array name="birth_defect_types">
+        <item>None</item>
+        <item>Spina Bifida</item>
+        <item>Other Birth Defect</item>
+    </string-array>
+
+    <string-array name="birth_defect_levels_spina_bifida">
+        <item>Level I</item>
+        <item>Level II</item>
+        <item>Level III</item>
+    </string-array>
+
+    <string-array name="birth_defect_levels_other">
+        <item>Level I</item>
+        <item>Level II</item>
+        <item>Level III</item>
+        <item>Level IV</item>
+    </string-array>
     <string name="clear_fragment_label">Clear All Data</string>
     <string name="dependency_summary_header_text">Add Your Dependents</string>
     <string name="dependency_summary_description_text">Use this form to enter your information about your dependents. Learn more about what who qualifies as a dependent here.</string>
@@ -139,15 +187,25 @@
     <string name="dependency_summary_child_aid_description_url">https://www.va.gov/pension/aid-attendance-housebound/</string>
 
 
+    <!-- FRAGMENT CLEAR ALL DATA -->
+    <string name="clear_data_warning">WARNING:  Pressing this button will remove all current calculations. This action is final and not reversible.</string>
+    <string name="clear_data_button"><b>Clear All Data</b></string>
+
 
     <!-- FRAGMENT ABOUT -->
     <string name="about_fragment_label">About</string>
-    <string name="previous">Previous</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="about_textview_second">About</string>
+    <string name="about_textView15">This application was created with the sole intention to help the veterans of the United States calculate their disability income with ease. With this app you can input your dependents as well as your marrital status, along with other helpful information, then the app will take care of the rest!</string>
+    <string name="about_textView16">The creation of this app could not have been possible without the hard work and knowledge of some of the best students attending Valecia College. Sarah Gillis, Gabriel Corbin, Publio Samayoa, Chance Giordano, Heloiza Naemy Sadoyama Camargo, and Jensy Fernandez worked very diligently, day and night, to make sure that this application was created with precision and excellence to make sure that it works great so you can work less.</string>
+    <string name="about_textView17">We hope you enjoy the App!</string>
 
 
     <!-- FRAGMENT HELP -->
     <string name="help_fragment_label">Help</string>
+    <string name="help_textView5">Disability ratings are based on the severity of your disability. The VA express this rating as a percentage, representing how much your disability decreases your overall health and ability to function.\n\nThen, they use your disability rating to determine your disability compensation rate, so we can calculate how much money you’ll receive from us each month.</string>
+    <string name="help_textView6">How does the VA determine combined VA disability ratings?</string>
+    <string name="help_textView7">Calculating your combined disability rating involves more than adding up your individual ratings. That’s why your combined rating may be different from the sum of your individual ratings. The VA takes percentages of percentages.\n\nFor example: Let’s say you are a veteran with two 10% ratings. The first rating will be 10% of 100 (which is 10%), leaving you with a 90% “healthy“ percentage. The second 10 rating will be 10% of the 90% (healthy percentage), which is 9%. The combined rating would be 19%. It is then rounded up or down. In this case, it would be rounded to 20%.</string>
+    <string name="help_textView8">For more information visit: \nwww.va.gov/disability/about-disability-ratings</string>
 
 
     <!-- FRAGMENT PRIVACY -->
@@ -156,28 +214,23 @@
     <string name="privacy_fragment_contact">HOW CAN YOU CONTACT US ABOUT THIS NOTICE? If you have any questions or comments about this notice, please submit an email to inquries@androidspace.com.</string>
 
 
-    <!-- FRAGMENT SETTINGS -->
-    <string name="settings_fragment_label">Settings</string>
-
-
     <!-- FRAGMENT TERMS  -->
     <string name="terms_fragment_label">Terms of Use</string>
     <string name="terms_fragment_intro">The VA Math Calculator is licensed to you (End-user) by Android Space for use only under the terms of this license agreement. By downloading the VA Math Calculator, you indicate that you agree to be bound by all the terms of this license agreement. USE OF THIS APP DOES NOT GUARANTEE ANY APPROVAL OF CLAIMS OR MONETARY AWARD(S).</string>
-    <string name="terms_fragment_terms1">1. THE APPLICATION.  The VA Math Calculator is an application created to provide calculations for VA disability claims and customized for Android mobile devices. The VA Math Calculator is not tailored to comply with industry-specific regulations (Health Insurance Portability and Accountability Act (HIPAA)), Federal Information Security Management Act (FISMA), etc.; therefore, if your interactions would be subject to such laws, you may not use this application. You may not use this application in a way that would violate the Gramm-Leach-Bliley Act (GLBA).</string>
-    <string name="terms_fragment_terms2">2. SCOPE OF LICENSE.  You may not reverse engineer, translate, disassemble, integrate, decompile, remove, modify, combine, create derivative work or updates of, adapt, or attempt to derive the source code of this application, or any part there (except with Android Space’s prior written consent).</string>
-    <string name="terms_fragment_terms3">3. TECHNICAL REQUIREMENTS.  Android Space reserves the right to modify the technical specifications as it sees appropriate at any time.</string>
-    <string name="terms_fragment_terms4">4. MAINTENANCE OR SUPPORT.  Android Space is not obligated, expressed, or implied, to provide any maintenance, technical, or other support for the VA Math Calculator.</string>
-    <string name="terms_fragment_terms5">5. USER-GENERATED CONTRIBUTIONS.  The VA Math Calculator does not offer users to submit or post content.</string>
-    <string name="terms_fragment_terms6">6. CONTRIBUTION LICENSE.  Android Space does not access, store, process, or use any user information that is entered into the VA Math Calculator. If a user submits suggestions for feedback regarding the VA Math Calculator, the user agrees that Android Space may use and share any feedback for any purpose without compensation to the user.</string>
-    <string name="terms_fragment_terms7">7. WARRANTY.  Android Space warrants that the VA Math Calculator is free of spyware, trojan horses, viruses, or any other malware at the time of your download. Android Space warrants that the VA Math Calculator works as described. No warranty is provided for the VA Math Calculator that is not executable on the device, that has been unauthorizedly modified, handled inappropriately, or culpably, combined or installed with inappropriate hardware or software, used with inappropriate accessories, regardless if by yourself or third parties, or if there are any other reasons outside of Android Space’s sphere of influence that affect the executability of the VA Math Calculator. Android Space requests that any users who discover issues notify Android Space without delay via the contact method in section 14 of this agreement.</string>
-    <string name="terms_fragment_terms8">8. PRODUCT CLAIMS.  Android Space and the End-user acknowledge that Android Space is responsible for addressing any claims of the End-user or any third party relating to the VA Math Calculator or the End-user’s possession and/or use of the VA Math Calculator, including, but not limited to: product liability claims; (ii) any claim that the VA Math Calculator fails to confirm to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</string>
-    <string name="terms_fragment_terms9">9. LEGAL COMPLIANCE.  You represent and warrant that you are not located in a country that is subject to a U.S. government embargo, or that has been designated by the U.S. government as a “terrorist supporting” country; and that you are not listed on any U.S. government list of prohibited or restricted parties.</string>
-    <string name="terms_fragment_terms10">10. TERMINATION.  The license is valid until terminated by Android Space or by you. Your rights under this license will terminate automatically and without notice from Android Space if you fail to adhere to any term(s) of this license. Upon license termination, you shall stop all use of the VA Math Calculator, and destroy all copies, full or partial, of the VA Math Calculator.</string>
-    <string name="terms_fragment_terms11">11. INTELLECTUAL PROPERTY RIGHTS.  Android Space and the End-user acknowledge that, in the event of any third-party claim that the VA Math Calculator, or the End-user’s possession and use of the VA Math Calculator, infringes on the third party’s intellectual property rights, Android Space will be solely responsible for the investigation, defense, settlement, and discharge or any such intellectual property infringement claims.</string>
-    <string name="terms_fragment_terms12">12. APPLICABLE LAW.  This license agreement is government by the laws of the State of Florida excluding conflicts of law rules.</string>
-    <string name="terms_fragment_terms13">13. MISCELLANEOUS.  If any of the terms of this agreement should be or become invalid, the validity of the remaining provisions shall not be affected. Invalid terms will be replaced by valid ones formulated in a way that will achieve the primary purpose. Collateral agreements, changes, and amendments are only valid if laid down in writing. The preceding clause can only be waived in writing.</string>
-    <string name="terms_fragment_terms14">14. CONTACT INFORMATION.  For general inquiries, complaints, questions, or feedback concerning the VA Math Calculator, please submit an email to inquries@androidspace.com.</string>
-
+    <string name="terms_fragment_terms1"><b>1. THE APPLICATION.</b>  The VA Math Calculator is an application created to provide calculations for VA disability claims and customized for Android mobile devices. The VA Math Calculator is not tailored to comply with industry-specific regulations (Health Insurance Portability and Accountability Act (HIPAA)), Federal Information Security Management Act (FISMA), etc.; therefore, if your interactions would be subject to such laws, you may not use this application. You may not use this application in a way that would violate the Gramm-Leach-Bliley Act (GLBA).</string>
+    <string name="terms_fragment_terms2"><b>2. SCOPE OF LICENSE.</b>  You may not reverse engineer, translate, disassemble, integrate, decompile, remove, modify, combine, create derivative work or updates of, adapt, or attempt to derive the source code of this application, or any part there (except with Android Space’s prior written consent).</string>
+    <string name="terms_fragment_terms3"><b>3. TECHNICAL REQUIREMENTS.</b>  Android Space reserves the right to modify the technical specifications as it sees appropriate at any time.</string>
+    <string name="terms_fragment_terms4"><b>4. MAINTENANCE OR SUPPORT.</b>  Android Space is not obligated, expressed, or implied, to provide any maintenance, technical, or other support for the VA Math Calculator.</string>
+    <string name="terms_fragment_terms5"><b>5. USER-GENERATED CONTRIBUTIONS.</b>  The VA Math Calculator does not offer users to submit or post content.</string>
+    <string name="terms_fragment_terms6"><b>6. CONTRIBUTION LICENSE.</b>  Android Space does not access, store, process, or use any user information that is entered into the VA Math Calculator. If a user submits suggestions for feedback regarding the VA Math Calculator, the user agrees that Android Space may use and share any feedback for any purpose without compensation to the user.</string>
+    <string name="terms_fragment_terms7"><b>7. WARRANTY.</b>  Android Space warrants that the VA Math Calculator is free of spyware, trojan horses, viruses, or any other malware at the time of your download. Android Space warrants that the VA Math Calculator works as described. No warranty is provided for the VA Math Calculator that is not executable on the device, that has been unauthorizedly modified, handled inappropriately, or culpably, combined or installed with inappropriate hardware or software, used with inappropriate accessories, regardless if by yourself or third parties, or if there are any other reasons outside of Android Space’s sphere of influence that affect the executability of the VA Math Calculator. Android Space requests that any users who discover issues notify Android Space without delay via the contact method in section 14 of this agreement.</string>
+    <string name="terms_fragment_terms8"><b>8. PRODUCT CLAIMS.</b>  Android Space and the End-user acknowledge that Android Space is responsible for addressing any claims of the End-user or any third party relating to the VA Math Calculator or the End-user’s possession and/or use of the VA Math Calculator, including, but not limited to: product liability claims; (ii) any claim that the VA Math Calculator fails to confirm to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</string>
+    <string name="terms_fragment_terms9"><b>9. LEGAL COMPLIANCE.</b>  You represent and warrant that you are not located in a country that is subject to a U.S. government embargo, or that has been designated by the U.S. government as a “terrorist supporting” country; and that you are not listed on any U.S. government list of prohibited or restricted parties.</string>
+    <string name="terms_fragment_terms10"><b>10. TERMINATION.</b>  The license is valid until terminated by Android Space or by you. Your rights under this license will terminate automatically and without notice from Android Space if you fail to adhere to any term(s) of this license. Upon license termination, you shall stop all use of the VA Math Calculator, and destroy all copies, full or partial, of the VA Math Calculator.</string>
+    <string name="terms_fragment_terms11"><b>11. INTELLECTUAL PROPERTY RIGHTS.</b>  Android Space and the End-user acknowledge that, in the event of any third-party claim that the VA Math Calculator, or the End-user’s possession and use of the VA Math Calculator, infringes on the third party’s intellectual property rights, Android Space will be solely responsible for the investigation, defense, settlement, and discharge or any such intellectual property infringement claims.</string>
+    <string name="terms_fragment_terms12"><b>12. APPLICABLE LAW.</b>  This license agreement is government by the laws of the State of Florida excluding conflicts of law rules.</string>
+    <string name="terms_fragment_terms13"><b>13. MISCELLANEOUS.</b>  If any of the terms of this agreement should be or become invalid, the validity of the remaining provisions shall not be affected. Invalid terms will be replaced by valid ones formulated in a way that will achieve the primary purpose. Collateral agreements, changes, and amendments are only valid if laid down in writing. The preceding clause can only be waived in writing.</string>
+    <string name="terms_fragment_terms14"><b>14. CONTACT INFORMATION.</b>  For general inquiries, complaints, questions, or feedback concerning the VA Math Calculator, please submit an email to inquries@androidspace.com.</string>
 
 
     <!-- FRAGMENT RESOURCES  -->
@@ -211,9 +264,6 @@
     <string name="additionalResources_suicideLifeline_text_description">Suicide and Crisis Lifeline for Veterans</string>
     <string name="additionalResources_suicideLifeline_text_to_link">Suicide and Crisis Lifeline for Veterans</string>
     <string name="additionalResources_suicideLifeline_text_url">https://988lifeline.org/help-yourself/veterans</string>
-
-    <!-- FRAGMENT REFERENCES  -->
-
 
 
 </resources>
