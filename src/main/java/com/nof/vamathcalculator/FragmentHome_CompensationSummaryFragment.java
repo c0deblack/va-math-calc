@@ -8,13 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
-import android.widget.TextView;
-
-=======
 
 import androidx.annotation.NonNull;
->>>>>>> upstream/main
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,12 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.nof.vamathcalculator.db.User;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
-<<<<<<< HEAD
-import org.w3c.dom.Text;
-
-=======
 import com.nof.vamathcalculator.databinding.FragmentHomeCompensationSummaryContainerBinding;
->>>>>>> upstream/main
 
 public class FragmentHome_CompensationSummaryFragment extends Fragment {
 
@@ -41,10 +31,7 @@ public class FragmentHome_CompensationSummaryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-=======
         data = new ViewModelProvider(requireActivity()).get(VAMathViewModel.class);
->>>>>>> upstream/main
     }
 
     @Override
@@ -59,16 +46,6 @@ public class FragmentHome_CompensationSummaryFragment extends Fragment {
     }
 
     @Override
-<<<<<<< HEAD
-    public void onStart() {
-        super.onStart();
-        View view = getView();
-        if(view!=null){
-            TextView compensation = (TextView) view.findViewById(R.id.fragment_compensation_total);
-            compensation.setText("$ 2. 00");
-        }
-    }
-=======
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         data.get_user().observe(requireActivity(), new Observer<User>() {
@@ -85,5 +62,4 @@ public class FragmentHome_CompensationSummaryFragment extends Fragment {
         binding = null;
     }
 
->>>>>>> upstream/main
 }
