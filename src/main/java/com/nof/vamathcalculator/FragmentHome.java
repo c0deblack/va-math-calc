@@ -99,7 +99,6 @@ public class FragmentHome extends Fragment {
                     break;
                 case 1:
                     fragment = new FragmentHome_DependencySummaryFragment();
-
                     break;
                 case 2:
                     fragment = new FragmentHome_DisabilitySummaryScrollFragment();

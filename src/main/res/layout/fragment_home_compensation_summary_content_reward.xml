@@ -20,10 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="$ 0.00"
+        android:text="$ 1.00"
         android:textColor="#00A51F"
         android:layout_marginTop="?android:actionBarSize"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+        android:id="@+id/fragment_compensation_total"
         />
 
 </RelativeLayout>
