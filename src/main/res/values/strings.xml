@@ -205,7 +205,9 @@
     <string name="help_textView5">Disability ratings are based on the severity of your disability. The VA express this rating as a percentage, representing how much your disability decreases your overall health and ability to function.\n\nThen, they use your disability rating to determine your disability compensation rate, so we can calculate how much money you’ll receive from us each month.</string>
     <string name="help_textView6">How does the VA determine combined VA disability ratings?</string>
     <string name="help_textView7">Calculating your combined disability rating involves more than adding up your individual ratings. That’s why your combined rating may be different from the sum of your individual ratings. The VA takes percentages of percentages.\n\nFor example: Let’s say you are a veteran with two 10% ratings. The first rating will be 10% of 100 (which is 10%), leaving you with a 90% “healthy“ percentage. The second 10 rating will be 10% of the 90% (healthy percentage), which is 9%. The combined rating would be 19%. It is then rounded up or down. In this case, it would be rounded to 20%.</string>
-    <string name="help_textView8">For more information visit: \nwww.va.gov/disability/about-disability-ratings</string>
+    <string name="help_textView8_text_description">For more information visit:  www.va.gov/disability/about-disability-ratings</string>
+    <string name="help_textView8_text_to_link">www.va.gov/disability/about-disability-ratings</string>
+    <string name="help_textView8_url">https://www.va.gov/disability/about-disability-ratings</string>
 
 
     <!-- FRAGMENT PRIVACY -->
