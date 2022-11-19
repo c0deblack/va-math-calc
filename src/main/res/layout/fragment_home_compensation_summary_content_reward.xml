@@ -17,6 +17,7 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         />
     <TextView
+        android:id="@+id/fragment_compensation_summary_reward_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -24,6 +25,7 @@
         android:textColor="#00A51F"
         android:layout_marginTop="?android:actionBarSize"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+        android:textSize="75sp"
         />
 
 </RelativeLayout>

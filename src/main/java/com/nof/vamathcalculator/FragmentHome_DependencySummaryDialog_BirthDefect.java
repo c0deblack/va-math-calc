@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.nof.vamathcalculator.db.BirthDefectChild;
+import com.nof.vamathcalculator.db.User;
 import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
@@ -119,6 +120,13 @@ public class FragmentHome_DependencySummaryDialog_BirthDefect extends DialogFrag
 
                         if(mACTION == VAMathDialogAction.CREATE){
                             data.insert_birth_defect(new_bd_child);
+                            User user = data.getUserRecord();
+                            if(user.num_child_birth_defect == null) {
+                                user.num_child_birth_defect = 1;
+                            } else {
+                                user.num_child_birth_defect++;
+                            }
+                            data.update_user(user);
                         } else {
                             new_bd_child._id = mID;
                             data.update_child_with_birth_defect(new_bd_child);

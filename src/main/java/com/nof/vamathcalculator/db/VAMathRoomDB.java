@@ -558,6 +558,7 @@ public abstract class VAMathRoomDB extends RoomDatabase {
                             298.18,
                             298.18
                     );
+                    INSTANCE.smc_ratingDAO().insertAll(smc_ratings.toArray(new SMC_Rating[0]));
                 }
             });
         }

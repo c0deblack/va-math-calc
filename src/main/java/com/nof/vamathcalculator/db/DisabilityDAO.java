@@ -19,6 +19,9 @@ public interface DisabilityDAO {
     @Query("SELECT * FROM disability")
     public LiveData<List<Disability>> getAll();
 
+    @Query("SELECT * FROM disability")
+    public List<Disability> getDisabilityList();
+
     @Query("SELECT * FROM disability WHERE _id = :id")
     public Disability getDisabilityFromID(int id);
 
