@@ -191,6 +191,16 @@ public class VAMathViewModel extends AndroidViewModel {
             compensation = compensation +
                     this.get_smc_compensation_from_status(status, user.smc_rating);
         }
+        if(user.num_child_birth_defect != null && user.num_child_birth_defect > 0){
+            List<BirthDefectChild> bd_children = data.getAllBirthDefects();
+            for(BirthDefectChild bd_child: bd_children) {
+                if(bd_child.compensation != null) {
+                    compensation = compensation + bd_child.compensation;
+                } else {
+                    Log.e("getFullCompensation", "A BirthDefectChild record is missing its compensation field. Null returned but expecting a double. Was the compensation value properly inserted when the record was created?");
+                }
+            }
+        }
 
         if(combined_rating > 20.0){
 
@@ -223,19 +233,6 @@ public class VAMathViewModel extends AndroidViewModel {
                         );
             }
 
-            if(user.num_child_birth_defect != null && user.num_child_birth_defect > 0){
-                Log.e("getFullCompensation", "bd_child comp");
-
-                List<BirthDefectChild> bd_children = data.getAllBirthDefects();
-                for(BirthDefectChild bd_child: bd_children) {
-                    if(bd_child.compensation != null) {
-                        Log.e("getFullCompensation", "bd_child comp");
-                        compensation = compensation + bd_child.compensation;
-                    } else {
-                        Log.e("getFullCompensation", "A BirthDefectChild record is missing its compensation field. Null returned but expecting a double. Was the compensation value properly inserted when the record was created?");
-                    }
-                }
-            }
         }
 
         return compensation;
