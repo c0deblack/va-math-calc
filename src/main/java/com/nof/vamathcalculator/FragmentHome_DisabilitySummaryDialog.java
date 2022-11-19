@@ -335,8 +335,10 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if(s.length() >= 3 && !save_button.isEnabled()){
+                                        if(s.length() >= 3){
                                             save_button.setEnabled(true);
+                                        } else {
+                                            save_button.setEnabled(false);
                                         }
                                     }
                                 });
