@@ -16,7 +16,7 @@
         android:layout_marginTop="30dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="Swipe right to change your dependency status or disability ratings."
+        android:text="Swipe left to change your dependency status or disability ratings."
         android:textColor="@color/black"
         android:textSize="35dp"
         />
