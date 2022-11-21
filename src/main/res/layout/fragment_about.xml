@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.Resources"
+    >
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,32 +20,25 @@
         android:id="@+id/textview_second"
         style="@style/VAMathCalculator.BodyHeader"
         android:text="@string/about_textview_second"
-        android:textColor="#2196F3"
-        android:textSize="34sp"
-        android:textAlignment="center"
+
         />
 
     <TextView
         android:id="@+id/textView15"
         style="@style/VAMathCalculator.BodyText"
         android:text="@string/about_textView15"
-        android:textAlignment="center"
-        android:textSize="16sp"
         />
 
     <TextView
         android:id="@+id/textView16"
         style="@style/VAMathCalculator.BodyText"
         android:text="@string/about_textView16"
-        android:textAlignment="center"
-        android:textSize="16sp"
         />
 
     <TextView
         android:id="@+id/textView17"
-        style="@style/VAMathCalculator.BodyHeader"
+        style="@style/VAMathCalculator.BodyText"
         android:text="@string/about_textView17"
-        android:textAlignment="center"
-        android:textSize="20sp"
         />
 </LinearLayout>
+</ScrollView>
