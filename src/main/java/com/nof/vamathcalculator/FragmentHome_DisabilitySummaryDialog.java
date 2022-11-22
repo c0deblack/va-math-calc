@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nof.vamathcalculator.db.Disability;
+import com.nof.vamathcalculator.db.User;
 import com.nof.vamathcalculator.db.VAColumns;
 import com.nof.vamathcalculator.model.VAMathDialogAction;
 import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
@@ -117,6 +118,7 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
                             disability = new Disability();
                         }
 
+                        User user = data.getUserRecord();
                         disability.short_name = short_desc.getText().toString();
                         disability.is_basic = disability_type.getSelectedItemPosition() == 0;
                         if(!disability.is_basic){
@@ -160,6 +162,9 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
                             }.toString();
                             disability.rating = 100000d;
                             disability.is_bilateral = false;
+                            user.smc_rating = disability.smc_rating;
+                            user.has_smc = true;
+                            data.update_user(user);
                         } else {
                             disability.smc_rating = null;
                             disability.rating = (disability_rating.getSelectedItemPosition() + 1) * 10.0;
@@ -330,8 +335,10 @@ public class FragmentHome_DisabilitySummaryDialog extends DialogFragment {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if(s.length() >= 3 && !save_button.isEnabled()){
+                                        if(s.length() >= 3){
                                             save_button.setEnabled(true);
+                                        } else {
+                                            save_button.setEnabled(false);
                                         }
                                     }
                                 });

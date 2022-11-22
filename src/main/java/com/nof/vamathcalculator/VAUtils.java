@@ -18,22 +18,98 @@ import com.nof.vamathcalculator.viewmodel.VAMathViewModel;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public final class VAUtils {
-    public static Double GetCombinedRating(List<Disability> disabilities){
-        return 0.0;
+    public static Double GetBilateralRating(List<Disability> disabilities){
+        if( disabilities == null || disabilities.size() == 0){
+            Log.e("GetCombinedRating", "Received an empty disability list.");
+            return 0.0;
+        }
+
+        // create a list that holds only basic disability ratings
+        List<Disability> dList = new ArrayList<>();
+        // filter the disabilities List, extracting only basic disabilities
+        for(Disability disability : disabilities){
+            if(disability.is_basic) dList.add(disability);
+        }
+        if( dList == null || dList.size() == 0){
+            Log.e("GetCombinedRating", "There are no basic ratings to compute.");
+            return 0.0;
+        }
+
+        // sort the list of basic disabilities
+        VAUtils.sortDisabilityPercentage(dList);
+
+        double combinedRating = 0.0;
+        double totalBodyValue = 100.0;
+        for(Disability disability : dList){
+            //Log.e("Disab", disability.rating.toString());
+            double VAMathRating = totalBodyValue * (disability.rating / 100.0);
+            combinedRating = combinedRating + VAMathRating;
+            totalBodyValue = totalBodyValue - VAMathRating;
+        }
+
+        combinedRating = Math.round(combinedRating);
+        // add 10% to combined bilateral ratings
+        combinedRating = combinedRating * 1.1;
+        combinedRating = Math.round(combinedRating);
+
+        return combinedRating;
     }
-    public static List<Disability> GetBilateralDisabilities(){
-        return new ArrayList<>();
+    public static double GetFinalCombinedRating(List<Double> rating_list){
+        double combinedRating = 0.0;
+        double totalBodyValue = 100.0;
+        for(double rating : rating_list){
+            double VAMathRating = totalBodyValue * (rating / 100.0);
+            combinedRating = combinedRating + VAMathRating;
+            totalBodyValue = totalBodyValue - VAMathRating;
+        }
+        combinedRating = Math.round(combinedRating);
+        return VAUtils.roundNearestTenth(combinedRating);
     }
-    public static List<Disability> GetNonBilateralDisabilities(){
-        return new ArrayList<>();
+    public static List<Disability> GetBilateralDisabilitiesList(List<Disability> disabilities){
+        List<Disability> bilateral_list = new ArrayList<>();
+
+        for(Disability disability : disabilities) {
+            if(disability.is_bilateral
+            && disability.is_basic) bilateral_list.add(disability);
+        }
+        return bilateral_list;
     }
-    public static List<Disability> GetDescendingDisabilityList(List<Disability> disabilities){
-        return new ArrayList<>();
+    public static List<Disability> GetNonBilateralDisabilitiesList(List<Disability> disabilities){
+        List<Disability> non_bilateral_list = new ArrayList<>();
+
+        for(Disability disability : disabilities) {
+            if(!disability.is_bilateral
+            && disability.is_basic) non_bilateral_list.add(disability);
+        }
+        return non_bilateral_list;
     }
 
+    //method to sort from highest percentage to lowest
+    public static void sortDisabilityPercentage(List<Disability> disabilityList) {
+        //Sort the percentage from highest to lowest
+        Collections.sort(disabilityList, new Comparator<Disability>() {
+            @Override
+            public int compare(Disability d1, Disability d2) {
+                return Double.compare(d2.rating, d1.rating);
+            }
+        });
+    }
+
+    //method to round to the nearest 10
+    // if 4 or less, round down. if 5 or higher, round up
+    public static double roundNearestTenth(double rating)
+    {
+        // Get the base of 10
+        int base_ten_of_rating = ((int)rating / 10) * 10;
+
+        // check if n is half way or more to the next 10
+        return (rating - base_ten_of_rating >= 5.0)? base_ten_of_rating + 10 : base_ten_of_rating;
+    }
 
     public abstract static class TextChangedListener<T> implements TextWatcher {
         private T target;

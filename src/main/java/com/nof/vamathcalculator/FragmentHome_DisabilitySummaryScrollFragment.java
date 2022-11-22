@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.SortedList;
 import com.nof.vamathcalculator.databinding.FragmentHomeDisabilitySummaryScrollContainerBinding;
 import com.nof.vamathcalculator.db.Disability;
 
+import com.nof.vamathcalculator.db.User;
 import com.nof.vamathcalculator.db.VAColumns;
 
 import com.nof.vamathcalculator.model.VAMathDialogAction;
@@ -50,7 +51,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
     public static class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
         //private final List<Disability> localDataSet;
-        private final SortedList<Disability> localDataSet;
+        private static SortedList<Disability> localDataSet;
 
         /**
          * Provide a reference to the type of views that you are using
@@ -75,6 +76,7 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                 delete_button = view.findViewById(R.id.disability_delete);
 
                 new Thread(new Runnable() {
+
                     @Override
                     public void run() {
                         delete_button.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +85,13 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
                                 int pos = getAdapterPosition();
                                 if(pos >= 0) {
                                     data.delete_disability(sorted_list.get(pos));
+                                    Disability disability = localDataSet.get(pos);
+                                    if(!disability.is_basic){
+                                        User user = data.getUserRecord();
+                                        user.smc_rating = null;
+                                        user.has_smc = false;
+                                        data.update_user(user);
+                                    }
                                 } else {
                                     Log.v("DisabilitySummary", "Delete_Button: Cannot delete disability at position " + pos);
                                 }
@@ -207,7 +216,8 @@ public class FragmentHome_DisabilitySummaryScrollFragment extends Fragment {
             public boolean areContentsTheSame(Disability oldItem, Disability newItem) {
                 return oldItem.is_bilateral == newItem.is_bilateral
                         && Objects.equals(oldItem.short_name, newItem.short_name)
-                        && Objects.equals(oldItem.rating, newItem.rating);
+                        && Objects.equals(oldItem.rating, newItem.rating)
+                        && Objects.equals(oldItem.smc_rating, newItem.smc_rating);
             }
             @Override
             public boolean areItemsTheSame(Disability item1, Disability item2) {

@@ -2,6 +2,7 @@ package com.nof.vamathcalculator;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -60,5 +61,18 @@ public class FragmentHelp extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_help, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        VAUtils.LinkTextInViewFromResource(
+                requireActivity(),
+                view.findViewById(R.id.textView8),
+                R.string.help_textView8_text_description,
+                R.string.help_textView8_text_to_link,
+                R.string.help_textView8_url
+        );
     }
 }

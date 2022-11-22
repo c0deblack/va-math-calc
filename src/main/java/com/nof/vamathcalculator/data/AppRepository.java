@@ -207,8 +207,12 @@ public class AppRepository {
     }
 
     public LiveData<User> getUser() { return user; }
+    public User getUserRecord() { return user_table.getUserRecord(); }
+
     public LiveData<List<Disability>> getDisabilities() { return disabilities; }
+    public List<Disability> getDisabilityList(){ return disability_table.getDisabilityList(); }
     public Disability getDisabilityFromID(int id) {return disability_table.getDisabilityFromID(id); }
+
     public LiveData<List<BirthDefectChild>> getChildren_birth_defects() {return children_birth_defects; }
 
     public void insertUser(User user) {
@@ -239,6 +243,8 @@ public class AppRepository {
     public void deleteAllDisabilities(){
         disability_table.deleteAll();
     }
+
+    public List<BirthDefectChild> getAllBirthDefects(){return birth_defect_table.getAllBirthDefects(); }
 
     public void insertChildWithBirthDefect(BirthDefectChild... children) {
         birth_defect_table.insertAll(children);

@@ -22,6 +22,9 @@ public interface UserDAO {
     @Query("Select * FROM user LIMIT 1")
     LiveData<User> getUserData();
 
+    @Query("Select * FROM user LIMIT 1")
+    User getUserRecord();
+
     @Query("UPDATE user SET " +
             VAColumns.UserColumns.BASIC_RATING + " = NULL, " +
             VAColumns.UserColumns.SMC_RATING + " = NULL, " +

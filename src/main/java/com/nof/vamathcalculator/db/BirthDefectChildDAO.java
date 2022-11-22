@@ -18,6 +18,9 @@ public interface BirthDefectChildDAO {
     @Query("Select * FROM birthdefectchild")
     public LiveData<List<BirthDefectChild>> getAll();
 
+    @Query("Select * FROM birthdefectchild")
+    public List<BirthDefectChild> getAllBirthDefects();
+
     @Query("Select * FROM birthdefectchild WHERE _id = :id")
     public BirthDefectChild getBirthDefectFromID(int id);
 
