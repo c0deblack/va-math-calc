@@ -36,6 +36,7 @@
         <TextView
             android:id="@+id/textView8"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/help_textView8_text_description" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

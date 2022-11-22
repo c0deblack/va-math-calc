@@ -31,18 +31,21 @@
         <TextView
             android:id="@+id/message2"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/fileClaim_howTo_text_description"
             />
 
         <TextView
             android:id="@+id/message3"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/fileClaim_fileOnline_text_description"
             />
 
         <TextView
             android:id="@+id/message4"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/fileClaim_claimStatus_text_description"
             />
 
@@ -61,6 +64,7 @@
         <TextView
             android:id="@+id/message7"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/additionalResources_VA_text_description"
             />
 
@@ -73,24 +77,28 @@
         <TextView
             android:id="@+id/message9"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/additionalResources_stateVA_text_description"
             />
 
         <TextView
             android:id="@+id/message10"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/additionalResources_DAV_text_description"
             />
 
         <TextView
             android:id="@+id/message11"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/additionalResources_lifeline_text_description"
             />
 
         <TextView
             android:id="@+id/message12"
             style="@style/VAMathCalculator.BodyText"
+            android:textColorLink="@color/blue_100"
             android:text="@string/additionalResources_suicideLifeline_text_description"
             />
 

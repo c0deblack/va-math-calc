@@ -48,6 +48,7 @@
             android:layout_alignParentBottom="true"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_100"
             android:text="Edit"
             />
         <Button
@@ -58,6 +59,7 @@
             android:layout_alignParentBottom="true"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_100"
             android:text="Delete"
             />
 
