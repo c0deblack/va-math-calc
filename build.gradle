@@ -53,6 +53,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.0-alpha02'
     implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
     implementation 'androidx.navigation:navigation-runtime:2.5.3'
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
     /**
      * Dependencies for the Room Database
