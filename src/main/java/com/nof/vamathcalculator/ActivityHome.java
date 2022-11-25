@@ -44,6 +44,7 @@ public class ActivityHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTheme(R.style.Theme_VAMathCalculator);
 
         //Log.e("ActivityHome", "onCreate()");
 
