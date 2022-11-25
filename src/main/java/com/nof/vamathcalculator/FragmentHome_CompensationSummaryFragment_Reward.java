@@ -48,6 +48,10 @@ public class FragmentHome_CompensationSummaryFragment_Reward extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reward_text = view.findViewById(R.id.fragment_compensation_summary_reward_text);
+        double compensation = data.getFullCompensation();
+        if(compensation > 0.0) {
+            reward_text.setText(String.format("$ %.2f", compensation));
+        }
     }
 
     @Override
