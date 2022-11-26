@@ -10,14 +10,14 @@
     <TextView
         android:id="@+id/clear_data_warning"
         style="@style/VAMathCalculator.BodyText"
-		android:layout_width="294dp"
-        android:layout_height="131dp"
+        android:layout_width="298dp"
+        android:layout_height="160dp"
         android:layout_marginTop="32dp"
         android:text="@string/clear_data_warning"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-		android:textAlignment="center"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_clear_data"
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/clear_data_button"
+        android:backgroundTint="@color/red_80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

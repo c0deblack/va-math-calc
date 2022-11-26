@@ -43,6 +43,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 android:text="@string/dependency_summary_description_text"
+                android:textColorLink="@color/blue_100"
                 />
 
 
@@ -134,7 +135,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/VAMathCalculator.Form.Body"
-                    android:text="@string/dependency_summary_child_education_description">
+                    android:text="@string/dependency_summary_child_education_description"
+                    android:textColorLink="@color/blue_100">
                 </TextView>
                 <Spinner
                     android:id="@+id/fragment_dependency_summary_education_spinner"
@@ -157,7 +159,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/VAMathCalculator.Form.Body"
-                    android:text="@string/dependency_summary_disabled_child_description">
+                    android:text="@string/dependency_summary_disabled_child_description"
+                    android:textColorLink="@color/blue_100">
                 </TextView>
                 <Button
                     android:id="@+id/add_disabled_child"
@@ -166,6 +169,7 @@
                     android:text="@string/dependency_summary_add_disabled_button_text"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
+                    android:backgroundTint="@color/blue_100"
                     android:textColor="@color/design_default_color_on_primary"
                     />
                 <LinearLayout
@@ -241,7 +245,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/VAMathCalculator.Form.Body"
-                    android:text="@string/dependency_summary_child_aid_description">
+                    android:text="@string/dependency_summary_child_aid_description"
+                    android:textColorLink="@color/blue_100">
                 </TextView>
                 <Spinner
                     android:id="@+id/fragment_dependency_summary_dailyaid_spinner"

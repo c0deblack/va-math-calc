@@ -13,168 +13,180 @@
         tools:context=".FragmentTerms">
 
         <TextView
-            android:id="@+id/terms"
+            android:id="@+id/terms_label"
+            style="@style/VAMathCalculator.BodyHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/terms_fragment_intro"
+            android:text="@string/terms_fragment_label"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/terms"
+            style="@style/VAMathCalculator.BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_fragment_intro"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/terms_label" />
 
         <TextView
             android:id="@+id/terms1"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="7dp"
             android:text="@string/terms_fragment_terms1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms" />
 
         <TextView
             android:id="@+id/terms2"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms1"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms1" />
 
         <TextView
             android:id="@+id/terms3"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms2"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms2" />
 
         <TextView
             android:id="@+id/terms4"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms3"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms3" />
 
         <TextView
             android:id="@+id/terms5"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms4"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms4" />
 
         <TextView
             android:id="@+id/terms6"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms5"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms5" />
 
         <TextView
             android:id="@+id/terms7"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms7"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms6"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms6" />
 
         <TextView
             android:id="@+id/terms8"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms7"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms7" />
 
         <TextView
             android:id="@+id/terms9"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms8"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms8" />
 
         <TextView
             android:id="@+id/terms10"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms9"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms9" />
 
         <TextView
             android:id="@+id/terms11"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms11"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms10"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms10" />
 
         <TextView
             android:id="@+id/terms12"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms11"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms11" />
 
         <TextView
             android:id="@+id/terms13"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms12"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms12" />
 
         <TextView
             android:id="@+id/terms14"
+            style="@style/VAMathCalculator.BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/terms_fragment_terms14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/terms13"
-            style="@style/VAMathCalculator.BodyText" />
+            app:layout_constraintTop_toBottomOf="@+id/terms13" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
