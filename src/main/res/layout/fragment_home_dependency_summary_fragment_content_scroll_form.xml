@@ -169,6 +169,7 @@
                     android:text="@string/dependency_summary_add_disabled_button_text"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
+                    android:backgroundTint="@color/blue_100"
                     android:textColor="@color/design_default_color_on_primary"
                     />
                 <LinearLayout
